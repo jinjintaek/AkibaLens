@@ -250,6 +250,88 @@
         text-align: center;
       }
 
+      .pipe {
+        display: grid;
+        grid-template-columns: 1fr 30px 1fr 30px 1fr;
+        gap: 10px;
+        align-items: stretch;
+        margin: 18px 0;
+      }
+
+      .pipe-card {
+        min-height: 118px;
+        padding: 14px;
+        border: 1px solid #d8e5ef;
+        border-radius: 12px;
+        background: #f7fafc;
+      }
+
+      .pipe-card strong {
+        display: block;
+        margin-bottom: 7px;
+        color: #126d86;
+        font-size: 14px;
+      }
+
+      .arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #126d86;
+        font-size: 26px;
+        font-weight: 950;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 14px;
+        padding: 14px;
+        border: 1px solid #dbe6f1;
+        border-radius: 12px;
+        background: #ffffff;
+      }
+
+      .time {
+        color: #126d86;
+        font-weight: 900;
+      }
+
+      .decision-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr 1.1fr 1.1fr;
+        gap: 1px;
+        margin-top: 12px;
+        border: 1px solid #dbe6f1;
+        background: #dbe6f1;
+        font-size: 12px;
+      }
+
+      .decision-grid div {
+        padding: 10px;
+        background: #ffffff;
+      }
+
+      .decision-grid .head {
+        color: #52647d;
+        background: #f4f7fb;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .callout {
+        padding: 16px 18px;
+        border-left: 5px solid #126d86;
+        border-radius: 10px;
+        background: #eef8fb;
+      }
+
       .figure-grid {
         display: grid;
         grid-template-columns: 0.8fr 1.2fr;
@@ -535,6 +617,420 @@
         </div>
       </section>
 
+      <section class="break">
+        <h2>Project Origin and Planning</h2>
+        <p class="lead">
+          이 프로젝트는 “AI 기술을 보여주기 위한 데모”가 아니라, 실제 쇼핑
+          경험에서 반복적으로 겪은 문제를 제품으로 풀어보려는 시도에서
+          시작했다.
+        </p>
+        <p>
+          일본 여행 중 아키하바라, 돈키호테, 중고 피규어샵을 방문하면 박스 없이
+          진열된 피규어를 자주 보게 된다. 마음에 드는 피규어를 발견해도
+          캐릭터명, 작품명, 제조사, 라인업, 일본어 상품명을 모르면 검색 자체가
+          막힌다. 특히 입문자나 일본어 검색에 익숙하지 않은 여행객에게는 가격
+          비교와 구매 판단이 더 어렵다.
+        </p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Initial Problem Statement</h3>
+            <ul>
+              <li>사진은 있는데 상품명을 모른다.</li>
+              <li>일본어 검색어를 만들기 어렵다.</li>
+              <li>동일 캐릭터의 유사 상품이 많아 가격 비교가 어렵다.</li>
+              <li>중고샵 가격이 합리적인지 현장에서 판단하기 어렵다.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Initial Product Hypothesis</h3>
+            <ul>
+              <li>사용자는 정확한 정답보다 검색 시작점이 먼저 필요하다.</li>
+              <li>캐릭터/작품 식별만으로도 검색 난이도를 크게 낮출 수 있다.</li>
+              <li>일본 쇼핑몰 링크가 함께 있으면 구매 판단이 빨라진다.</li>
+              <li>불확실성을 명시하면 오답도 탐색 후보로 활용할 수 있다.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout">
+          <strong>Planning Principle:</strong>
+          2-4주 내에 실제로 만질 수 있는 MVP를 만드는 것을 우선했다. 자체 CV
+          모델 학습, CLIP fine-tuning, 결제, 구매대행, 위시리스트, 가격 알림은
+          MVP 이후로 미뤘다.
+        </div>
+      </section>
+
+      <section>
+        <h2>MVP Scope Definition</h2>
+        <p>
+          MVP 범위는 “사진 업로드 → 피규어 식별 → 상품 후보 검색 → 쇼핑몰 링크
+          제공 → 가격 비교 preview”로 제한했다. 정확한 가격 자동 수집이나
+          자체 모델 학습은 제품 검증 이전 단계에서는 과하다고 판단했다.
+        </p>
+        <table>
+          <tr>
+            <th>Area</th>
+            <th>Included in MVP</th>
+            <th>Excluded from MVP</th>
+            <th>Reason</th>
+          </tr>
+          <tr>
+            <td>Image Input</td>
+            <td>JPG/PNG/WEBP upload and preview</td>
+            <td>Multi-image session, camera capture</td>
+            <td>단일 이미지 업로드만으로 핵심 흐름 검증 가능</td>
+          </tr>
+          <tr>
+            <td>AI</td>
+            <td>OpenAI Vision structured output</td>
+            <td>Custom CNN, CLIP/SigLIP fine-tuning</td>
+            <td>사용자 가치 검증 전 모델 학습은 비용 대비 과함</td>
+          </tr>
+          <tr>
+            <td>Search</td>
+            <td>OpenAI Web Search + marketplace links</td>
+            <td>Full crawler, reverse image search index</td>
+            <td>검색 후보가 유용한지 먼저 확인</td>
+          </tr>
+          <tr>
+            <td>Price</td>
+            <td>Price preview UI and outbound links</td>
+            <td>Real-time price parser</td>
+            <td>쇼핑몰 정책/구조 검토 전 자동 파싱은 리스크가 큼</td>
+          </tr>
+          <tr>
+            <td>Persistence</td>
+            <td>None</td>
+            <td>PostgreSQL, accounts, wishlists</td>
+            <td>첫 MVP는 stateless demo로 충분</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Development Timeline</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time">Phase 1</div>
+            <div>
+              <strong>Project setup</strong>
+              <p>Next.js frontend, FastAPI backend, 기본 디렉터리, 환경변수 샘플, README를 구성했다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 2</div>
+            <div>
+              <strong>Upload UI</strong>
+              <p>이미지 업로드, 미리보기, 파일 검증, 분석 버튼, 로딩/에러 상태를 구현했다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 3</div>
+            <div>
+              <strong>Vision API integration</strong>
+              <p>FastAPI multipart endpoint와 OpenAI Responses API 이미지 입력을 연결했다. OpenAI quota 이슈를 해결하며 실제 요청 도달을 확인했다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 3.5</div>
+            <div>
+              <strong>Candidate-oriented schema</strong>
+              <p>정답 단정 UI를 버리고 visual features, search queries, subject candidates, unknown fields 중심 스키마로 전환했다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 4</div>
+            <div>
+              <strong>Marketplace retrieval</strong>
+              <p>DuckDuckGo/Bing/Google Custom Search 실험 후, 안정성과 구현 속도 기준으로 OpenAI Web Search를 기본 provider로 선택했다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 5</div>
+            <div>
+              <strong>Price comparison preview</strong>
+              <p>AmiAmi, Mandarake, Suruga-ya 링크와 가격 preview UI를 구현했다. 실제 가격 파싱은 MVP 이후로 보류했다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 6</div>
+            <div>
+              <strong>Evaluation</strong>
+              <p>샘플 5장으로 평가를 수행했고, 파일명에 포함된 정답 힌트가 결과를 왜곡하는 label leakage를 발견했다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 7</div>
+            <div>
+              <strong>Deployment</strong>
+              <p>GitHub repo, Vercel frontend, Render backend를 배포하고 production에서 <code>mode: openai</code> 동작을 확인했다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="break">
+        <h2>Detailed MVP Pipeline</h2>
+        <p>
+          AkibaLens의 핵심 파이프라인은 이미지 자체를 웹에서 직접 검색하는 구조가
+          아니다. Vision 모델이 이미지를 텍스트 단서로 바꾸고, 그 텍스트 단서를
+          검색 및 후보 비교에 활용한다.
+        </p>
+        <div class="pipe">
+          <div class="pipe-card">
+            <strong>1. User Upload</strong>
+            JPG/PNG/WEBP 이미지 검증, 미리보기, 8MB 제한, upload state 관리.
+          </div>
+          <div class="arrow">→</div>
+          <div class="pipe-card">
+            <strong>2. Vision Identification</strong>
+            캐릭터, 작품, 시각 특징, 불확실한 필드, 검색어를 구조화된 JSON으로 반환.
+          </div>
+          <div class="arrow">→</div>
+          <div class="pipe-card">
+            <strong>3. Retrieval Query</strong>
+            일본어/영어 marketplace-ready query 생성. 캐릭터/작품/포즈/색상 중심.
+          </div>
+        </div>
+        <div class="pipe">
+          <div class="pipe-card">
+            <strong>4. Web Search</strong>
+            OpenAI Web Search로 Good Smile, AmiAmi, Mandarake, Suruga-ya 등 후보 검색.
+          </div>
+          <div class="arrow">→</div>
+          <div class="pipe-card">
+            <strong>5. Candidate Reranking</strong>
+            검색 후보 제목/스니펫과 Vision 단서를 비교해 score, evidence, concerns 생성.
+          </div>
+          <div class="arrow">→</div>
+          <div class="pipe-card">
+            <strong>6. User Decision UI</strong>
+            상품 후보, 쇼핑몰 링크, 가격 preview, 불확실성, 다음 확인 방법을 함께 표시.
+          </div>
+        </div>
+        <div class="callout">
+          <strong>Key Design:</strong>
+          이 파이프라인은 “AI가 정답을 맞혔다”가 아니라 “사용자가 검색과 비교를
+          시작할 수 있게 만들었다”에 초점을 둔다. 그래서 confidence, unknown
+          fields, candidate concerns를 UI에 노출한다.
+        </div>
+      </section>
+
+      <section>
+        <h2>Decision Matrix</h2>
+        <p>
+          프로젝트 중 여러 기술 선택지가 있었다. 아래 표는 당시 선택지와 최종
+          결정 이유를 정리한 것이다.
+        </p>
+        <div class="decision-grid">
+          <div class="head">Decision</div>
+          <div class="head">Option A</div>
+          <div class="head">Option B</div>
+          <div class="head">Chosen Reason</div>
+
+          <div>AI model strategy</div>
+          <div>Custom CV model / CLIP fine-tuning</div>
+          <div>OpenAI Vision / Gemini Vision API</div>
+          <div>초기 목표는 사용자 가치 검증이므로 API-first가 빠르고 현실적이었다.</div>
+
+          <div>Search strategy</div>
+          <div>HTML scraping / DuckDuckGo / Bing</div>
+          <div>OpenAI Web Search</div>
+          <div>무료 HTML 검색은 challenge/품질 이슈가 있어 MVP 안정성이 낮았다.</div>
+
+          <div>Google Custom Search</div>
+          <div>Google CSE JSON API</div>
+          <div>OpenAI Web Search fallback</div>
+          <div>신규 고객 접근 제한/403 이슈로 MVP 기본 provider로 부적합했다.</div>
+
+          <div>Identification UX</div>
+          <div>정답처럼 단일 상품명 표시</div>
+          <div>후보/근거/불확실성 표시</div>
+          <div>Vision 오답 가능성이 있어 후보 탐색 UX가 더 정직하고 안전했다.</div>
+
+          <div>Price comparison</div>
+          <div>즉시 실시간 가격 파싱</div>
+          <div>Preview UI + outbound links</div>
+          <div>사이트 정책/robots/HTML 구조 검토 전 자동 파싱은 리스크가 컸다.</div>
+
+          <div>Deployment</div>
+          <div>Local-only portfolio</div>
+          <div>Vercel + Render live MVP</div>
+          <div>실제 사용 가능한 링크가 포트폴리오 신뢰도를 높인다고 판단했다.</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Engineering Incidents and Resolutions</h2>
+        <p>
+          개발 과정에서 단순 구현보다 중요한 부분은 막혔던 문제를 정의하고,
+          대안을 비교하고, 현재 MVP에 맞는 결정을 내리는 과정이었다.
+        </p>
+        <table>
+          <tr>
+            <th>Incident</th>
+            <th>Impact</th>
+            <th>Resolution</th>
+            <th>Reasoning</th>
+          </tr>
+          <tr>
+            <td>OpenAI quota / billing issue</td>
+            <td>Vision API 연결은 되었지만 실제 분석 요청이 실패했다.</td>
+            <td>API credit을 충전하고 같은 endpoint를 재검증했다.</td>
+            <td>무료/결제 상태가 API 사용 가능성과 다르다는 점을 확인했다.</td>
+          </tr>
+          <tr>
+            <td>Vision output too conservative</td>
+            <td>캐릭터/작품 대신 시각 묘사만 반환되어 검색 결과가 무의미했다.</td>
+            <td>캐릭터/작품은 적극 추정하고, 제조사/라인업은 보수적으로 두도록 프롬프트를 수정했다.</td>
+            <td>사용자는 정답 확정보다 검색 시작점이 필요했기 때문이다.</td>
+          </tr>
+          <tr>
+            <td>Web ChatGPT vs API quality gap</td>
+            <td>웹 ChatGPT는 상품명을 맞추는데 API는 틀리는 현상이 있었다.</td>
+            <td>Vision 단독 호출과 검색/후보 검증이 결합된 흐름의 차이로 분석했다.</td>
+            <td>API 모델이 “쓰레기”라기보다 도구/검색/프롬프트/후보 검증 차이가 컸다.</td>
+          </tr>
+          <tr>
+            <td>Google Custom Search 403</td>
+            <td>검색 API 기반 RAG 구현이 막혔다.</td>
+            <td>OpenAI Web Search provider를 기본으로 전환했다.</td>
+            <td>신규 고객 접근 제한 가능성이 있어 MVP 일정상 우회가 합리적이었다.</td>
+          </tr>
+          <tr>
+            <td>DuckDuckGo/Bing HTML search instability</td>
+            <td>무료 검색 실험은 challenge 또는 낮은 후보 품질 문제가 있었다.</td>
+            <td>실험 코드는 참고로 두고 안정 provider 중심으로 전환했다.</td>
+            <td>MVP에서는 무료보다 재현성과 결과 품질이 중요했다.</td>
+          </tr>
+          <tr>
+            <td>Filename label leakage</td>
+            <td>샘플 파일명에 nendoroid/luminasta 같은 정답 힌트가 있어 평가가 과대평가됐다.</td>
+            <td>파일명을 sample_01.png 형태로 바꾸고 재평가했다.</td>
+            <td>AI 평가에서 입력 leakage를 제거해야 신뢰 가능한 결과를 얻을 수 있다.</td>
+          </tr>
+          <tr>
+            <td>Production returned mock mode</td>
+            <td>Render 배포 후 프론트는 동작했지만 실제 OpenAI가 아니라 mock 응답을 반환했다.</td>
+            <td>환경변수 이름을 <code>OPENAI_API_KEY</code>로 수정하고 manual deploy했다.</td>
+            <td>배포 환경에서 env var 이름 하나가 전체 AI 연결을 바꿀 수 있음을 확인했다.</td>
+          </tr>
+          <tr>
+            <td>Long inference time</td>
+            <td>Vision + Web Search + reranking 조합으로 응답이 길어졌다.</td>
+            <td>식별 단계 web search는 기본 비활성화하고, 검색 결과 수를 3개로 제한했다.</td>
+            <td>정확도와 속도 사이에서 MVP는 “작동하는 후보 탐색”을 우선했다.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="break">
+        <h2>Evaluation Design and Findings</h2>
+        <p>
+          샘플 평가는 모델 성능을 과장하기 위한 것이 아니라, 제품으로서 어디까지
+          유효하고 어디서 깨지는지 확인하기 위한 실험이었다.
+        </p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Initial Evaluation</h3>
+            <p>
+              초기 평가에서는 파일명에 상품 힌트가 포함되어 있었다. 예를 들어
+              <code>reze_nendoroid</code>, <code>gojo_luminasta</code> 같은 이름이
+              모델 입력 텍스트에 포함되었다.
+            </p>
+            <ul>
+              <li>Character identification: 5 / 5</li>
+              <li>Series identification: 5 / 5</li>
+              <li>Product line hint: 4 / 5</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>No Filename Hint Evaluation</h3>
+            <p>
+              이후 파일명을 <code>sample_01.png</code> 형태로 바꾸고 재평가했다.
+              이 평가가 더 공정한 기준이다.
+            </p>
+            <ul>
+              <li>Character identification: 4 / 5</li>
+              <li>Series identification: 4 / 5</li>
+              <li>Product line hint: 0-1 / 5</li>
+            </ul>
+          </div>
+        </div>
+        <h3>What the Experiment Proved</h3>
+        <ul>
+          <li>캐릭터/작품 식별은 MVP 가치 검증에 충분히 유효하다.</li>
+          <li>정확한 상품명/라인업 식별은 별도 문제이며 난이도가 훨씬 높다.</li>
+          <li>파일명, 박스 텍스트, 가격표 등 작은 힌트가 모델 결과에 큰 영향을 줄 수 있다.</li>
+          <li>Vision이 틀리면 Web Search도 틀린 방향으로 진행된다.</li>
+          <li>따라서 UI는 단일 정답보다 후보와 불확실성을 보여줘야 한다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Product and UX Lessons</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>What Worked</h3>
+            <ul>
+              <li>사진 업로드 후 캐릭터/작품을 추정하는 흐름은 직관적이었다.</li>
+              <li>일본어 검색어를 자동 생성하는 기능은 사용자 문제와 잘 맞는다.</li>
+              <li>쇼핑몰 링크가 있으면 사용자가 바로 검증할 수 있다.</li>
+              <li>candidate reranking은 검색 후보를 단순 나열보다 이해하기 쉽게 만든다.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>What Needs Work</h3>
+            <ul>
+              <li>응답 시간이 길어 사용자가 멈춘 것처럼 느낄 수 있다.</li>
+              <li>결과 화면이 정보량이 많아 단계별 UX가 필요하다.</li>
+              <li>상품 라인업 정확도는 아직 불안정하다.</li>
+              <li>가격 비교가 preview라 실제 구매 판단에는 한계가 있다.</li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          다음 UX 개선은 “식별 중 → 상품 후보 검색 중 → 가격 확인 링크 생성 중”처럼
+          분석 단계를 분리해 보여주는 staged UI가 적절하다. 이렇게 하면 느린
+          추론 시간을 사용자가 이해할 수 있고, 중간 결과도 더 빨리 전달할 수 있다.
+        </p>
+      </section>
+
+      <section>
+        <h2>Cost, Latency, and Deployment Notes</h2>
+        <table>
+          <tr>
+            <th>Topic</th>
+            <th>Current State</th>
+            <th>Portfolio Explanation</th>
+          </tr>
+          <tr>
+            <td>Latency</td>
+            <td>Production sample request took roughly 40-50 seconds.</td>
+            <td>Vision, Web Search, reranking, Render cold start가 결합되어 느리다.</td>
+          </tr>
+          <tr>
+            <td>Cost</td>
+            <td>OpenAI API 비용 발생.</td>
+            <td>MVP 검증에는 허용 가능하지만, 공개 데모에는 rate limit/usage control이 필요하다.</td>
+          </tr>
+          <tr>
+            <td>Render Free Tier</td>
+            <td>비활성 후 서버가 sleep 상태로 내려간다.</td>
+            <td>면접 데모 전 health endpoint를 열어 서버를 깨워두는 것이 좋다.</td>
+          </tr>
+          <tr>
+            <td>Vercel Frontend</td>
+            <td>정적/클라이언트 중심 Next.js UI는 안정적으로 배포됨.</td>
+            <td>프론트는 빠르게 뜨고, 실제 병목은 백엔드 분석 요청이다.</td>
+          </tr>
+          <tr>
+            <td>API Safety</td>
+            <td>OpenAI key는 Render 환경변수에만 저장.</td>
+            <td>브라우저에 노출되는 값은 backend URL뿐이다.</td>
+          </tr>
+        </table>
+      </section>
+
       <section>
         <h2>Problems Found and Solved</h2>
         <table>
@@ -575,6 +1071,43 @@
           가능한 상품 후보와 일본어 검색어로 바꿔주는 AI 검색 보조 MVP”로
           포지셔닝하는 것이 가장 적절하다.
         </p>
+        <table>
+          <tr>
+            <th>Limitation</th>
+            <th>Why It Matters</th>
+            <th>Possible Fix</th>
+          </tr>
+          <tr>
+            <td>추론 시간이 길다</td>
+            <td>사용자는 버튼을 누른 뒤 앱이 멈춘 것처럼 느낄 수 있다.</td>
+            <td>staged response, streaming status, retrieval 비동기화, 검색 후보 수 조정</td>
+          </tr>
+          <tr>
+            <td>UI 정보량이 많다</td>
+            <td>초보 사용자는 candidate, evidence, unknown fields를 한 번에 이해하기 어렵다.</td>
+            <td>상단에는 가장 유력한 후보, 하단에는 상세 근거를 접을 수 있게 구성</td>
+          </tr>
+          <tr>
+            <td>정확도 편차</td>
+            <td>Reze 케이스처럼 비슷한 캐릭터로 오식별되면 검색도 함께 틀어진다.</td>
+            <td>추가 이미지 입력, 후보군 다중 유지, 상품 이미지 비교</td>
+          </tr>
+          <tr>
+            <td>상품 라인업 식별</td>
+            <td>Grandista, Luminasta, Ichiban Kuji처럼 세부 라인업은 이미지 단독으로 어렵다.</td>
+            <td>박스/받침대/로고 OCR, 상품 DB/RAG, marketplace image matching</td>
+          </tr>
+          <tr>
+            <td>가격 정보</td>
+            <td>현재 가격 preview는 실제 가격 파싱이 아니므로 구매 판단에는 제한이 있다.</td>
+            <td>사이트 정책 검토 후 가격 parser 또는 official API/affiliate feed 탐색</td>
+          </tr>
+          <tr>
+            <td>운영 비용</td>
+            <td>OpenAI Vision + Web Search + reranking은 요청당 비용과 latency가 있다.</td>
+            <td>캐싱, rate limit, lower-cost model routing, search result reuse</td>
+          </tr>
+        </table>
       </section>
 
       <section>
@@ -593,6 +1126,77 @@
           <li>샘플을 20장 이상으로 늘리고 조건별 평가셋을 만든다.</li>
           <li>쇼핑몰 정책을 확인한 뒤 실제 가격 파싱 여부를 결정한다.</li>
         </ul>
+        <h3>Short-term Plan</h3>
+        <table>
+          <tr>
+            <th>Priority</th>
+            <th>Task</th>
+            <th>Expected Impact</th>
+          </tr>
+          <tr>
+            <td>P0</td>
+            <td>Staged UI and progress state</td>
+            <td>느린 응답 시간을 사용자가 이해할 수 있게 만든다.</td>
+          </tr>
+          <tr>
+            <td>P0</td>
+            <td>Demo-safe sample set and guide</td>
+            <td>면접/포트폴리오 시연 안정성을 높인다.</td>
+          </tr>
+          <tr>
+            <td>P1</td>
+            <td>Evaluation set expansion to 20+ images</td>
+            <td>정확도 주장을 더 신뢰할 수 있게 만든다.</td>
+          </tr>
+          <tr>
+            <td>P1</td>
+            <td>Additional image upload UX</td>
+            <td>박스/받침대/가격표 기반 식별 정확도를 높인다.</td>
+          </tr>
+          <tr>
+            <td>P2</td>
+            <td>Actual price extraction research</td>
+            <td>가격 비교 기능을 preview에서 실제 기능으로 발전시킨다.</td>
+          </tr>
+        </table>
+        <h3>Long-term Roadmap</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time">Phase 2</div>
+            <div>
+              <strong>Price tracking</strong>
+              <p>사용자가 특정 후보 상품을 저장하고 가격 변동을 볼 수 있게 한다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 3</div>
+            <div>
+              <strong>Price drop alerts</strong>
+              <p>관심 상품 가격이 내려가면 알림을 보내는 기능을 검토한다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 4</div>
+            <div>
+              <strong>Wishlist</strong>
+              <p>찾은 피규어 후보를 저장하고 재검색할 수 있게 한다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 5</div>
+            <div>
+              <strong>Collection management</strong>
+              <p>사용자가 보유 피규어를 등록하고 컬렉션을 관리할 수 있게 한다.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">Phase 6</div>
+            <div>
+              <strong>Second-hand marketplace expansion</strong>
+              <p>Mercari, Yahoo Auction, Rakuten 등 중고거래 통합 검색을 검토한다.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section>
