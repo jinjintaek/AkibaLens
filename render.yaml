@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: akibalens-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: BACKEND_CORS_ORIGINS
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5.2
+      - key: OPENAI_SEARCH_MODEL
+        sync: false
+      - key: OPENAI_IMAGE_DETAIL
+        value: high
+      - key: OPENAI_IDENTIFICATION_WEB_SEARCH
+        value: "false"
+      - key: CANDIDATE_RERANKING_ENABLED
+        value: "true"
+      - key: SEARCH_PROVIDER
+        value: openai
+      - key: SEARCH_RESULT_LIMIT
+        value: "3"

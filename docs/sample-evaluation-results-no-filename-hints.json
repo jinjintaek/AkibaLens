@@ -1,0 +1,346 @@
+[
+  {
+    "filename": "sample_01.png",
+    "expected": {
+      "character": "Katsuki Bakugo",
+      "series": "My Hero Academia",
+      "expected_product_hint": "Grandista"
+    },
+    "actual": {
+      "character": "Katsuki Bakugo",
+      "series": "My Hero Academia (Boku no Hero Academia)",
+      "manufacturer": "Banpresto",
+      "product_line": "",
+      "estimated_product_name": "Banpresto Katsuki Bakugo figure (Battle pose / explosion hand) My Hero Academia",
+      "confidence": "medium",
+      "notes": "The figure is clearly Katsuki Bakugo from My Hero Academia; exact Banpresto line/variant can’t be confirmed from this single image (no base/box text visible beyond BANPRESTO marking).",
+      "search_queries_ja": [
+        "バンプレスト 爆豪勝己 フィギュア 黒 オレンジ コスチューム 片手 突き出し",
+        "僕のヒーローアカデミア 爆豪勝己 プライズ フィギュア BANPRESTO ロゴ",
+        "ヒロアカ 爆豪 フィギュア しゃがみ ポーズ 手のひら 前"
+      ],
+      "search_queries_en": [
+        "Banpresto Katsuki Bakugo figure black orange costume palm out crouching pose",
+        "My Hero Academia Bakugo prize figure Banpresto logo on leg",
+        "Bakugo figure grenade belt green gloves orange soles"
+      ],
+      "product_candidates": [
+        {
+          "product_name": "My Hero Academia Katsuki Bakugo prize figure (crouching / palm-out attack pose)",
+          "manufacturer": "Banpresto",
+          "product_line": "",
+          "evidence": "Visible 'BANPRESTO' marking; typical Banpresto prize-figure sculpt/style; Bakugo hero costume elements and dynamic attack pose.",
+          "confidence": "medium"
+        },
+        {
+          "product_name": "Banpresto The Amazing Heroes / similar MHA prize line Bakugo variant (pose-specific)",
+          "manufacturer": "Banpresto",
+          "product_line": "The Amazing Heroes (possible)",
+          "evidence": "This pose/outfit style is common in Banpresto MHA prize lines like Amazing Heroes; not enough proof to lock exact line without box/base info.",
+          "confidence": "low"
+        }
+      ]
+    },
+    "retrieved_candidates": [
+      {
+        "title": "駿河屋 -<中古>爆豪勝己 「僕のヒーローアカデミア」 Combination Battle-KATSUKI BAKUGO-（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602278194",
+        "snippet": "반프레스토(프라이즈) 표기 + ‘Combination Battle’ 라인업의 바쿠고 단품 페이지입니다. 공격 자세(전투 포즈) 계열로, 사용자가 말한 ‘한 손을 앞으로 내민 폭발 포즈’와 가장 컨셉이 근접해 보이는 후보입니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp Combination Battle-KATSUKI BAKUGO- バンプレスト"
+      },
+      {
+        "title": "駿河屋 -<中古>爆豪勝己 「僕のヒーローアカデミア」 THE AMAZING HEROES-DX-KATSUKI BAKUGO-（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602282647",
+        "snippet": "반프레스토 ‘THE AMAZING HEROES-DX’ 바쿠고 제품 페이지입니다. 해당 라인은 손을 뻗는 전투/개성 발동 포즈가 많아, ‘폭발 손’ 포즈와 매칭 가능성이 있어 근접 후보로 포함합니다(정확 포즈는 이미지로 추가 확인 필요).",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp Bakugo Banpresto figure explosion hand (THE AMAZING HEROES-DX)"
+      },
+      {
+        "title": "駿河屋 -<中古>爆豪勝己 「僕のヒーローアカデミア」 KING OF ARTIST -KATSUKI BAKUGO-（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602185376",
+        "snippet": "반프레스토 ‘KING OF ARTIST’ 바쿠고 단품 페이지입니다. 대형 프라이즈 계열이라 실물에 ‘BANPRESTO’ 각인/표기가 있는 경우가 많고, 액션 포즈 제품이 존재해 비교 확인용 후보로 적합합니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp 爆豪勝己 バンプレスト KING OF ARTIST"
+      }
+    ]
+  },
+  {
+    "filename": "sample_02.png",
+    "expected": {
+      "character": "Satoru Gojo",
+      "series": "Jujutsu Kaisen",
+      "expected_product_hint": "Luminasta"
+    },
+    "actual": {
+      "character": "Satoru Gojo",
+      "series": "Jujutsu Kaisen",
+      "manufacturer": "",
+      "product_line": "",
+      "estimated_product_name": "Satoru Gojo (Jujutsu Kaisen) figure – unmasked, hands-forward jujutsu pose, dark navy/black high-collar outfit",
+      "confidence": "medium",
+      "notes": "Image strongly suggests Satoru Gojo from Jujutsu Kaisen based on hair/eyes/uniform and iconic casting pose, but manufacturer and exact product line cannot be confirmed from this single photo without base/box shots.",
+      "search_queries_ja": [
+        "呪術廻戦 五条悟 フィギュア 素顔 青い目 両手 前に出す ポーズ 黒 紺 制服",
+        "五条悟 フィギュア 無量空処 ポーズ（両手） 素顔",
+        "五条悟 プライズ フィギュア 素顔 ハイネック 制服"
+      ],
+      "search_queries_en": [
+        "Jujutsu Kaisen Satoru Gojo figure unmasked blue eyes hands forward pose high collar dark uniform",
+        "Gojo Satoru prize figure unmasked technique pose both hands extended",
+        "Satoru Gojo statue unmasked casting pose dark navy uniform"
+      ],
+      "product_candidates": [
+        {
+          "product_name": "Satoru Gojo (unmasked) prize figure with hands-forward technique pose (various lines)",
+          "manufacturer": "",
+          "product_line": "",
+          "evidence": "Commonly produced Gojo prize figures depict unmasked face with blue eyes and a technique-casting hands-forward pose in the dark Jujutsu Tech uniform; image lacks base/branding so exact line cannot be pinned down.",
+          "confidence": "low"
+        },
+        {
+          "product_name": "Satoru Gojo – Jujutsu Kaisen – figure in Jujutsu High uniform, unmasked, action pose (non-scale/prize)",
+          "manufacturer": "",
+          "product_line": "",
+          "evidence": "Sculpt details (wrinkled uniform, dynamic wide stance, both hands posed) match typical non-scale/prize action figures; no packaging text visible.",
+          "confidence": "low"
+        }
+      ]
+    },
+    "retrieved_candidates": [
+      {
+        "title": "POP UP PARADE Satoru Gojo｜Good Smile Company",
+        "url": "https://www.goodsmile.com/en/product/9814/POP%2BUP%2BPARADE%2BSatoru%2BGojo",
+        "snippet": "고죠 사토루 정식 상품 페이지. 교복(하이칼라) 스타일의 어두운 의상 + 전투/술식 포즈 계열로, 사진의 ‘무가면(푸른 눈 노출) + 손을 앞으로 내민 술식 자세’와 가장 그럴듯하게 맞습니다. 또한 마스크를 벗은 ‘교체용 머리 파츠(무가면/맨얼굴)’ 포함이 명시되어 있어 조건과 부합합니다.",
+        "source": "goodsmile.com",
+        "query": "Jujutsu Kaisen Satoru Gojo figure unmasked blue eyes hands forward pose high collar dark uniform"
+      },
+      {
+        "title": "駿河屋 -<中古>figma 五条悟 「呪術廻戦」（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602219411",
+        "snippet": "figma 고죠 사토루 중고 상품 페이지. ‘領域展開「無量空処」手(영역전개 손)’/‘虚式「ムラサキ」手(무라사키 손)’ 등 손 파츠가 포함되어 있어, 사진처럼 ‘양손을 앞으로 내민 술식 포즈’ 재현형(가동 피규어)일 가능성이 큽니다. 무가면/얼굴 파츠(표정 파츠)도 언급되어 후보로 적합합니다.",
+        "source": "suruga-ya.jp",
+        "query": "Gojo Satoru prize figure unmasked technique pose both hands extended"
+      },
+      {
+        "title": "駿河屋 -<中古>[素顔欠品] フィグゼロ 五条悟 「呪術廻戦」 1/6 アクションフィギュア（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602255922",
+        "snippet": "threezero 계열(1/6) ‘フィグゼロ’ 고죠로 보이는 액션 피규어 상품 페이지. 술식 포즈용 교체 손목 파츠(‘赫/無量空処/ムラサキ’ 등)가 기재되어 있어 사진의 ‘손을 앞으로 내민 주술 포즈’와 방향성이 같습니다. 단, 이 페이지는 ‘素顔欠品(맨얼굴 파츠 결품)’으로 표시되어 있어, 현재 매물 구성은 사진과 다를 수 있습니다.",
+        "source": "suruga-ya.jp",
+        "query": "呪術廻戦 五条悟 フィギュア 素顔 両手 ポーズ"
+      }
+    ]
+  },
+  {
+    "filename": "sample_03.png",
+    "expected": {
+      "character": "Monkey D. Luffy",
+      "series": "One Piece",
+      "expected_product_hint": "Ichiban Kuji"
+    },
+    "actual": {
+      "character": "Monkey D. Luffy",
+      "series": "ONE PIECE",
+      "manufacturer": "",
+      "product_line": "",
+      "estimated_product_name": "ONE PIECE Monkey D. Luffy Gear 4 (Boundman/Snakeman) smoke effect crouching pose figure",
+      "confidence": "medium",
+      "notes": "이미지의 핵심 식별 포인트는 ‘밀짚모자 루피’ + ‘웅크린 전투 포즈’ + ‘대형 연기/구름 이펙트 파츠’ 조합입니다. 정확한 제조사/상품명은 사진 단독으로는 불확실하므로 위 검색어로 동일한 연기 파츠 형태와 베이스를 기준으로 역매칭하는 것을 권장합니다.",
+      "search_queries_ja": [
+        "ワンピース ルフィ フィギュア ギア4 煙 エフェクト しゃがみ",
+        "モンキー・D・ルフィ 赤いベスト 黒い短パン 煙雲 エフェクト フィギュア",
+        "ONE PIECE ルフィ ストローハット しゃがみ ポーズ 雲 フィギュア ベース グレー"
+      ],
+      "search_queries_en": [
+        "One Piece Luffy figure crouching pose smoke cloud effect base",
+        "Monkey D. Luffy red vest black shorts straw hat smoke effect figure",
+        "Luffy Gear 4 smoke clouds diorama figure gray base"
+      ],
+      "product_candidates": [
+        {
+          "product_name": "Figuarts ZERO (フィギュアーツZERO) Monkey D. Luffy battle pose with smoke effect (possible Gear 4 themed)",
+          "manufacturer": "Bandai Spirits (possible)",
+          "product_line": "Figuarts ZERO (possible)",
+          "evidence": "다이내믹 포즈+대형 이펙트 파츠 구성은 Figuarts ZERO 스타일과 유사하나, 이미지에 로고/박스 정보가 없어 단정 불가.",
+          "confidence": "low"
+        },
+        {
+          "product_name": "Ichiban Kuji / Prize figure Monkey D. Luffy with cloud/smoke effect diorama base",
+          "manufacturer": "",
+          "product_line": "Ichiban Kuji / Prize (possible)",
+          "evidence": "베이스 포함 디오라마형 연기 이펙트는 경품계열에서도 흔한 구성. 다만 특정 쿠지/시리즈명은 이미지 단서 부족.",
+          "confidence": "low"
+        },
+        {
+          "product_name": "Portrait.Of.Pirates (P.O.P) style dynamic Luffy with effect parts (similar concept)",
+          "manufacturer": "MegaHouse (possible)",
+          "product_line": "Portrait.Of.Pirates (possible)",
+          "evidence": "고퀄 효과 연출 디오라마와 유사한 방향성이 있으나, P.O.P 특유의 명확한 조형/채색 시그니처를 이 사진만으로 확정하기 어려움.",
+          "confidence": "low"
+        }
+      ]
+    },
+    "retrieved_candidates": [
+      {
+        "title": "モンキー・D・ルフィ「ワンピース」スーパーエフェクト能力者フィギュアvol.2（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602010908",
+        "snippet": "루피 본체에 ‘몸에서 피어오르는 증기/연기’ 같은 에펙트 일체형을 강조한 상품(‘スーパーエフェクト能力者フィギュア’). 요청하신 ‘연기/구름 이펙트 + 전투 포즈’ 콘셉트와 가장 직접적으로 맞닿아 있는 루피 단품 상세 페이지라 유력 후보입니다(다만 Gear4 명시는 없어서 실제 실물 디테일은 페이지 이미지로 추가 확인 필요).",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp 602010908 モンキー・D・ルフィ スーパーエフェクト能力者フィギュアvol.2"
+      },
+      {
+        "title": "モンキー・D・ルフィ「ワンピース」スーパーエフェクト能力者フィギュアvol.2の取り扱い店舗一覧|中古・新品通販の駿河屋",
+        "url": "https://www.suruga-ya.jp/product/other/602010908",
+        "snippet": "위 ‘スーパーエフェクト能力者フィギュアvol.2’와 동일 상품군을 여러 매장 재고로 묶어 보여주는 페이지. 디테일(연기/증기 이펙트 일체형 루피) 확인 및 동일품 검색/가격대 비교에 유용합니다. (정확한 ‘상품 상세’는 링크된 상세 페이지가 더 적합)",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp モンキー・D・ルフィ エフェクト フィギュア vol.2"
+      },
+      {
+        "title": "〖TOY入荷情報〗P.O.P ワンピース SA-MAXIMUM モンキー・D・ルフィ \"ギア4\"スネイクマン入荷！",
+        "url": "https://www.mandarake.co.jp/dir/spr/toy/2019/10/31/toypop-sa-maximum-d-4.html",
+        "snippet": "사용자 추정(기어4 Boundman/Snakeman)과 ‘ギア4/スネイクマン’ 키워드가 정확히 일치하는 P.O.P SA-MAXIMUM 루피 기어4 스네이크맨 언급 페이지입니다. 다만 이는 ‘입고/소개’ 성격의 만다라케 토픽이라, 요청하신 ‘연기(스모크) 이펙트 + 웅크린 포즈’와 1:1로 같다고 단정하긴 어려워 ‘근접 후보’로 제시합니다.",
+        "source": "mandarake.co.jp",
+        "query": "site:mandarake.co.jp ルフィ フィギュア しゃがみ 煙 エフェクト"
+      }
+    ]
+  },
+  {
+    "filename": "sample_04.png",
+    "expected": {
+      "character": "Reze",
+      "series": "Chainsaw Man",
+      "expected_product_hint": "Nendoroid"
+    },
+    "actual": {
+      "character": "Mizore Yoroizuka",
+      "series": "Sound! Euphonium (Hibike! Euphonium)",
+      "manufacturer": "",
+      "product_line": "",
+      "estimated_product_name": "Nendoroid Mizore Yoroizuka (Sound! Euphonium) figure with daisy/flower accessory",
+      "confidence": "medium",
+      "notes": "Image shows a Nendoroid-style figure holding a small white flower. Character most plausibly Mizore Yoroizuka from Sound! Euphonium based on hair shape/color and overall styling; exact Nendoroid number and manufacturer cannot be confirmed without box/label text.",
+      "search_queries_ja": [
+        "ねんどろいど 鎧塚みぞれ 花 パーツ",
+        "響けユーフォ みぞれ ねんどろいど 白い花",
+        "鎧塚みぞれ フィギュア デフォルメ 緑目 黒髪 ショート"
+      ],
+      "search_queries_en": [
+        "Nendoroid Mizore Yoroizuka flower accessory",
+        "Mizore Yoroizuka chibi figure holding daisy",
+        "Sound! Euphonium Mizore Yoroizuka Nendoroid white sleeveless blouse black ribbon"
+      ],
+      "product_candidates": [
+        {
+          "product_name": "Nendoroid Mizore Yoroizuka",
+          "manufacturer": "Good Smile Company",
+          "product_line": "Nendoroid",
+          "evidence": "Figure is clearly Nendoroid-style with GSC-type clear articulated stand; hairstyle (short dark purple bob with long fringe) and subdued expression closely match Mizore Yoroizuka’s common Nendoroid depiction; outfit aligns with casual/school look often used in figure releases.",
+          "confidence": "medium"
+        },
+        {
+          "product_name": "Nendoroid Doll / Nendoroid-style Mizore Yoroizuka variant (if exists)",
+          "manufacturer": "",
+          "product_line": "",
+          "evidence": "Cloth-like seam lines are not visible; body appears standard Nendoroid plastic. Include as a retrieval fallback only if listings show similar outfit and flower accessory.",
+          "confidence": "low"
+        }
+      ]
+    },
+    "retrieved_candidates": [
+      {
+        "title": "Home Page | Good Smile Company Online Store",
+        "url": "https://www.goodsmile.com/en",
+        "snippet": "Discover exclusive figures, merchandise, and campaigns at Good Smile Company's online store, bringing Japanese pop culture to the world.",
+        "source": "goodsmile.com",
+        "query": "Nendoroid Mizore Yoroizuka flower accessory"
+      },
+      {
+        "title": "AmiAmi [Character & Hobby Shop]",
+        "url": "https://www.amiami.com/eng/detail/?gcode=GOODS-04673759",
+        "snippet": "AmiAmi [Character & Hobby Shop]",
+        "source": "amiami.com",
+        "query": "Nendoroid Mizore Yoroizuka flower accessory"
+      },
+      {
+        "title": "Nendo.Guide - Your guide to Nendoroids - NendoGuide",
+        "url": "https://www.nendo.guide/",
+        "snippet": "Nendo.Guide informs you about Nendoroids - awesome small-sized figures featuring famous characters from anime, games and even movies - Nendoroid Dolls, accessories, playsets and more! They are produced by a Japanese company selling them around the world.",
+        "source": "nendo.guide",
+        "query": "Nendoroid Mizore Yoroizuka flower accessory"
+      }
+    ]
+  },
+  {
+    "filename": "sample_05.png",
+    "expected": {
+      "character": "Tanjiro Kamado",
+      "series": "Demon Slayer",
+      "expected_product_hint": "Ichiban Kuji"
+    },
+    "actual": {
+      "character": "Kamado Tanjiro",
+      "series": "Demon Slayer: Kimetsu no Yaiba",
+      "manufacturer": "",
+      "product_line": "",
+      "estimated_product_name": "Kamado Tanjiro (Tanjiro Kamado) Nichirin sword pose figure with green-black checkered haori",
+      "confidence": "high",
+      "notes": "Background is clean/white and no packaging text is visible, so the exact manufacturer/line can’t be confirmed from this image alone; character identification is strong due to scar + hanafuda earrings + checkered haori.",
+      "search_queries_ja": [
+        "竈門炭治郎 フィギュア 日輪刀 両手構え 市松模様 羽織",
+        "鬼滅の刃 炭治郎 立体化 戦闘ポーズ フィギュア",
+        "竈門炭治郎 プライズ フィギュア 羽織 なびき 刀 構え"
+      ],
+      "search_queries_en": [
+        "Tanjiro Kamado figure two-handed sword pose checkered haori",
+        "Demon Slayer Tanjiro Kamado battle pose Nichirin katana figure",
+        "Tanjiro Kamado prize figure dynamic haori flowing sword raised"
+      ],
+      "product_candidates": [
+        {
+          "product_name": "VIBRATION STARS Kamado Tanjiro (竈門炭治郎)",
+          "manufacturer": "Bandai Spirits (Banpresto)",
+          "product_line": "VIBRATION STARS",
+          "evidence": "This looks like a common Banpresto-style dynamic prize sculpt; Tanjiro with flowing checkered haori and two-handed katana stance is frequently seen in VIBRATION STARS releases (needs pose-by-pose confirmation).",
+          "confidence": "medium"
+        },
+        {
+          "product_name": "FIGURIZMα Kamado Tanjiro (竈門炭治郎)",
+          "manufacturer": "SEGA / S-Fire (prize: SEGA)",
+          "product_line": "FIGURIZMα",
+          "evidence": "FIGURIZMα line often features dramatic cloth/haori motion and intense facial expressions; Tanjiro sword-action variants exist, but exact match requires checking photos of the specific release.",
+          "confidence": "low"
+        },
+        {
+          "product_name": "Grandista Kamado Tanjiro (竈門炭治郎)",
+          "manufacturer": "Bandai Spirits (Banpresto)",
+          "product_line": "Grandista",
+          "evidence": "Grandista is another common Tanjiro prize line; however Grandista sculpts are typically larger with different posing—include as a fallback search pivot.",
+          "confidence": "low"
+        }
+      ]
+    },
+    "retrieved_candidates": [
+      {
+        "title": "フィギュアーツZERO 竈門炭治郎 -水の呼吸- 「鬼滅の刃」（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602186932",
+        "snippet": "탄지로(이마 흉터·귀걸이·초록/검정 체크 하오리) + 니치린 검을 든 전투 포즈 계열로, 질문의 ‘양손 검 자세/역동적 하오리’와 가장 콘셉트가 유사한 완성품 피규어 후보입니다(호흡 이펙트가 포함된 버전이라 실물과 일부 차이 가능).",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp 竈門炭治郎 フィギュア 日輪刀 両手 構え 市松模様"
+      },
+      {
+        "title": "figma 竈門炭治郎 「鬼滅の刃」（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602196150",
+        "snippet": "가동 피규어(figma)라서 ‘양손으로 검을 잡는 공격 자세’ 재현이 매우 흔하고, 탄지로의 체크 하오리/하나다후다 귀걸이/니치린 검 구성과도 맞습니다. 사진의 조형이 ‘고정 포즈’가 아니라면 특히 유력합니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp 竈門炭治郎 フィギュア 日輪刀 両手 構え 市松模様"
+      },
+      {
+        "title": "Nendoroid Tanjiro Kamado (#1193) - NendoGuide",
+        "url": "https://www.nendo.guide/nendoroids/nendoroid/tanjiro-kamado-1193/",
+        "snippet": "만약 SD(넨도로이드) 체형/교체 얼굴 파츠가 보이는 제품이라면 이 페이지가 해당될 가능성이 있습니다. 검(니치린 블레이드)과 전투 표정/포즈 재현용 파츠(이펙트 포함) 안내가 있어 ‘검 전투 포즈 탄지로’ 단서와 부합합니다.",
+        "source": "nendo.guide",
+        "query": "site:nendo.guide Tanjiro Kamado"
+      }
+    ]
+  }
+]

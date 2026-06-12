@@ -1,0 +1,325 @@
+[
+  {
+    "filename": "reze_nendoroid.png",
+    "expected": {
+      "character": "Reze",
+      "series": "Chainsaw Man",
+      "expected_product_hint": "Nendoroid"
+    },
+    "actual": {
+      "character": "Reze (レゼ)",
+      "series": "Chainsaw Man (チェンソーマン)",
+      "manufacturer": "",
+      "product_line": "",
+      "estimated_product_name": "Nendoroid Reze (Chainsaw Man)",
+      "confidence": "medium",
+      "notes": "이미지는 넨도로이드 스타일의 레제로 강하게 보이지만, 박스/넘버 표기 등 확정 단서가 없어 제조사·정확한 상품번호는 검색으로 교차확인 필요.",
+      "search_queries_ja": [
+        "ねんどろいど レゼ チェンソーマン 白い花 パーツ",
+        "Good Smile ねんどろいど レゼ 私服 黒リボン 白ノースリーブ",
+        "レゼ ねんどろいど 表情パーツ 緑目 前髪 片目"
+      ],
+      "search_queries_en": [
+        "Good Smile Nendoroid Reze Chainsaw Man flower accessory",
+        "Nendoroid Reze white sleeveless shirt black ribbon tie",
+        "chibi figure Reze Chainsaw Man holding daisy"
+      ],
+      "product_candidates": [
+        {
+          "product_name": "Nendoroid Reze (Chainsaw Man)",
+          "manufacturer": "Good Smile Company",
+          "product_line": "Nendoroid",
+          "evidence": "사진의 비율/관절/투명 지지대가 전형적인 넨도로이드 구성. 레제의 헤어스타일(한쪽 눈 가리는 앞머리)과 사복(흰 상의+검은 리본, 검은 반바지) 및 꽃 소품이 레제 연출로 자주 쓰임.",
+          "confidence": "medium"
+        }
+      ]
+    },
+    "retrieved_candidates": [
+      {
+        "title": "Nendoroid Reze｜Good Smile Company",
+        "url": "https://www.goodsmile.com/en/product/62079",
+        "snippet": "체인소맨(극장판 레제편) ‘레제’ 넨도로이드 공식 상품 페이지로, 옵션 파츠에 ‘꽃(Flower)’가 포함되어 있어(사진의 흰 데이지/마가렛 소품과 일치 가능) 가장 유력합니다.",
+        "source": "goodsmile.com",
+        "query": "site:goodsmile.com Nendoroid Reze Chainsaw Man"
+      },
+      {
+        "title": "ねんどろいど レゼ｜グッドスマイルカンパニー公式ショップ",
+        "url": "https://www.goodsmile.com/ja/product/62079",
+        "snippet": "일본어 공식 페이지(상품번호 2865)로, 표정 파츠(웃는 얼굴/응시 얼굴)와 오프션 파츠 ‘花(꽃)’ 및 ‘ボム再現パーツ’가 명시되어 있어 사진 속 ‘꽃을 든 레제 넨도로이드’ 가설과 잘 맞습니다.",
+        "source": "goodsmile.com",
+        "query": "site:goodsmile.com Nendoroid Reze Chainsaw Man"
+      },
+      {
+        "title": "駿河屋 -<予約>ねんどろいど レゼ 「劇場版 チェンソーマン レゼ篇」（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602305372",
+        "snippet": "서구라야(마켓) 상품 상세로 ‘ねんどろいど レゼ(극장판 체인소맨 레제편)’을 명시하며, 오프션에 ‘花(꽃)’가 포함된다고 적혀 있어 사진의 흰 꽃 소품과 부합할 가능성이 큽니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp ねんどろいど レゼ 2865"
+      }
+    ]
+  },
+  {
+    "filename": "tanjiro_ichibankuji_a.png",
+    "expected": {
+      "character": "Tanjiro Kamado",
+      "series": "Demon Slayer",
+      "expected_product_hint": "Ichiban Kuji"
+    },
+    "actual": {
+      "character": "Kamado Tanjiro",
+      "series": "Demon Slayer: Kimetsu no Yaiba",
+      "manufacturer": "",
+      "product_line": "",
+      "estimated_product_name": "Ichiban Kuji Demon Slayer: Kimetsu no Yaiba Kamado Tanjiro figure (green/black checkered haori, sword stance)",
+      "confidence": "medium",
+      "notes": "캐릭터는 카마도 탄지로로 식별 가능(귀걸이/흉터/시마모양 하오리). 다만 받침대/박스 정보가 없어 정확한 ‘일번쿠지 몇 탄/몇 상’ 또는 세부 제품명 확정은 어려움. 파일명에 ichibankuji가 포함되어 일번쿠지 가능성을 우선 제시함.",
+      "search_queries_ja": [
+        "一番くじ 鬼滅の刃 竈門炭治郎 フィギュア 市松模様 羽織 日輪刀 両手構え",
+        "鬼滅の刃 炭治郎 フィギュア 刀を両手で構える 羽織なびき",
+        "竈門炭治郎 プライズ フィギュア 市松模様 羽織 立ち回り ポーズ"
+      ],
+      "search_queries_en": [
+        "Ichiban Kuji Demon Slayer Tanjiro Kamado figure two-handed sword stance flowing checkered haori",
+        "Demon Slayer Kimetsu no Yaiba Tanjiro prize figure katana raised checkered cloak",
+        "Tanjiro Kamado hanafuda earrings figure dynamic stance no base"
+      ],
+      "product_candidates": [
+        {
+          "product_name": "Ichiban Kuji Demon Slayer: Kimetsu no Yaiba Kamado Tanjiro figure (A prize/upper prize candidate)",
+          "manufacturer": "Bandai Spirits (likely)",
+          "product_line": "Ichiban Kuji (likely)",
+          "evidence": "Image matches common Ichiban Kuji promotional photography style on white background; dynamic haori flow + two-handed katana stance often used for Ichiban Kuji main prizes. Filename suggests ichibankuji.",
+          "confidence": "low"
+        },
+        {
+          "product_name": "Banpresto/Bandai Spirits prize figure Tanjiro Kamado (dynamic sword pose, checkered haori)",
+          "manufacturer": "Bandai Spirits (possible)",
+          "product_line": "Prize figure (possible)",
+          "evidence": "Pose and sculpt style consistent with mass-market prize figures; exact sub-line (e.g., VIBRATION STARS, etc.) cannot be confirmed from this single angle.",
+          "confidence": "low"
+        }
+      ]
+    },
+    "retrieved_candidates": [
+      {
+        "title": "竈門炭治郎 「一番くじ 鬼滅の刃～鬼殺の志～」 LAYER SCAPE A賞 フィギュア（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602207593",
+        "snippet": "(가설 일치도 높음) ‘이치반쿠지’ 경품(A상) 탄지로 피규어로, 검을 들고 전투 자세를 취한 구도/표정 계열이라 사용자가 말한 ‘검을 양손으로 잡는 칼자세+체커무늬 하오리’ 타입과 잘 맞을 가능성이 큽니다. 흰 배경 크롭 이미지로 유통되는 경우가 많아 확인용으로 적합합니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp 竈門炭治郎 \"一番くじ\" フィギュア"
+      },
+      {
+        "title": "竈門炭治郎 「一番くじ 鬼滅の刃 ～暴かれた刀鍛冶の里～」 A賞 フィギュア（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602253739",
+        "snippet": "(가설 일치도 중간~높음) ‘이치반쿠지’ A상 탄지로 전투 장면 재현 피규어로, ‘용맹한 표정/역동적인 조형’ 설명이 있어 하오리가 날리며 칼을 드는 포즈 계열과 매칭될 수 있습니다. 다만 ‘도공마을편’ 콘셉트라 세부 연출(베이스/이펙트 등)이 사진과 다를 수 있어 교차확인용 후보입니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp 竈門炭治郎 \"一番くじ\" フィギュア"
+      },
+      {
+        "title": "figma 竈門炭治郎 DXエディション 「鬼滅の刃」（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602196152",
+        "snippet": "(유사 포즈 대안) 이치반쿠지(고정 포즈) 대신 가동 피규어(figma) 탄지로 DX로, 체크무늬 하오리+일륜도(카타나) 포함이라 ‘양손 검 자세’ 같은 연출이 가능합니다. 사진 속이 ‘프라이즈 고정 피규어’가 아니라 관절 가동형일 가능성도 있어 안전한 대체 후보로 제시합니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp 竈門炭治郎 フィギュア 両手 構え 羽織"
+      }
+    ]
+  },
+  {
+    "filename": "luffy_ichibankuji_b.png",
+    "expected": {
+      "character": "Monkey D. Luffy",
+      "series": "One Piece",
+      "expected_product_hint": "Ichiban Kuji"
+    },
+    "actual": {
+      "character": "Monkey D. Luffy",
+      "series": "ONE PIECE",
+      "manufacturer": "",
+      "product_line": "",
+      "estimated_product_name": "Ichiban Kuji ONE PIECE Monkey D. Luffy (Gear 5 / Nika) figure crouching pose with cloud/smoke effects",
+      "confidence": "medium",
+      "notes": "이미지에 밀짚모자+빨간 조끼의 루피 실루엣과 기어5(니카)에서 자주 쓰이는 흰 구름/연기 에페가 뚜렷합니다. 다만 박스/로고가 없어 정확한 로또명과 상(賞), 제조사는 검색으로 교차확인이 필요합니다.",
+      "search_queries_ja": [
+        "一番くじ ワンピース ルフィ ギア5 ニカ B賞 フィギュア 雲 エフェクト しゃがみ",
+        "バンダイ 一番くじ ルフィ ニカ フィギュア 台座 青 グレー",
+        "ルフィ フィギュア ギア5 しゃがみ ポーズ 白い煙 エフェクト"
+      ],
+      "search_queries_en": [
+        "Ichiban Kuji One Piece Luffy Gear 5 Nika prize B figure crouching cloud smoke effect",
+        "Bandai Ichiban Kuji Luffy Gear 5 figure with white cloud effects blue gray base"
+      ],
+      "product_candidates": [
+        {
+          "product_name": "Ichiban Kuji ONE PIECE Monkey D. Luffy (Gear 5 / Nika) figure (crouching pose with cloud effects)",
+          "manufacturer": "Bandai Spirits (possible)",
+          "product_line": "Ichiban Kuji (possible)",
+          "evidence": "Pose and large white cloud/smoke effect parts strongly match Gear 5 Luffy prize-style figures; user filename suggests 'ichibankuji_b'. No packaging text visible so maker/line not fully confirmable.",
+          "confidence": "medium"
+        }
+      ]
+    },
+    "retrieved_candidates": [
+      {
+        "title": "駿河屋 -<中古>モンキー・D・ルフィ ギア5 「一番くじ ワンピース 未来島エッグヘッド～きみへの想い～」 MASTERLISE EXPIECE A賞 フィギュア（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602302179",
+        "snippet": "사용자 추정(이치반쿠지/루피 기어5 니카/연기(구름) 이펙트 포함 피규어)와 가장 직접적으로 맞닿는 ‘一番くじ + ルフィ ギア5 + MASTERLISE EXPIECE + A賞 フィギュア’의 개별 상품 페이지입니다. 사진/구성품에서 구름 이펙트·받침대 형태가 일치할 가능성이 높습니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp 一番くじ ワンピース 未来島エッグヘッド ルフィ ギア5 MASTERLISE EXPIECE A賞"
+      },
+      {
+        "title": "駿河屋 -<中古>モンキー・D・ルフィ 「一番くじ ワンピース 未来島エッグヘッド」 MASTERLISE EXPIECE A賞 フィギュア（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602285056",
+        "snippet": "동일하게 ‘一番くじ + 未来島エッグヘッド + ルフィ + MASTERLISE EXPIECE A賞’ 조합의 상품 페이지로, 기어5/니카 조형(연기 이펙트가 큰 타입)일 가능성이 있습니다. 사용자가 언급한 파란-회색 계열 타원형 베이스가 이 라인업에서 보일 수 있어 후보로 적합합니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp \"MASTERLISE EXPIECE\" ルフィ ギア5 エッグヘッド"
+      },
+      {
+        "title": "駿河屋 -<中古>モンキー・D・ルフィ 「ワンピース」 KING OF ARTIST THE MONKEY.D.LUFFY GEAR5 -ONE PIECE BASE SHOP COLOR ver.-（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602309768",
+        "snippet": "이치반쿠지(쿠지 경품)로 단정하기 어렵거나, ‘기어5 루피 + 이펙트/받침대 포함’이라는 큰 특징만 맞는 경우 대안 후보입니다. KING OF ARTIST GEAR5 루피 계열은 역동 포즈와 베이스/지지대가 있어, 사진의 구름 이펙트·크라우칭(웅크린) 콘셉트와 혼동될 수 있습니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp ルフィ ニカ ギア5 フィギュア エフェクト 台座"
+      }
+    ]
+  },
+  {
+    "filename": "bakugo_grandista.png",
+    "expected": {
+      "character": "Katsuki Bakugo",
+      "series": "My Hero Academia",
+      "expected_product_hint": "Grandista"
+    },
+    "actual": {
+      "character": "Katsuki Bakugo",
+      "series": "My Hero Academia (Boku no Hero Academia)",
+      "manufacturer": "Banpresto",
+      "product_line": "",
+      "estimated_product_name": "Banpresto My Hero Academia Katsuki Bakugo figure (crouching pose, hand-forward explosion stance)",
+      "confidence": "high",
+      "notes": "Character identification is strong: Katsuki Bakugo from My Hero Academia. Manufacturer is supported by visible BANPRESTO watermark; exact line/product name cannot be confirmed from image alone.",
+      "search_queries_ja": [
+        "バンプレスト 爆豪勝己 フィギュア しゃがみ ポーズ 手を突き出し",
+        "僕のヒーローアカデミア 爆豪勝己 バンプレスト 黒 オレンジ 緑 グローブ フィギュア",
+        "BANPRESTO ヒロアカ 爆豪 グレネードベルト フィギュア"
+      ],
+      "search_queries_en": [
+        "Banpresto Katsuki Bakugo figure crouching pose hand forward",
+        "My Hero Academia Bakugo Banpresto black orange costume grenade belt figure",
+        "BANPRESTO Bakugo explosion stance figure"
+      ],
+      "product_candidates": [
+        {
+          "product_name": "My Hero Academia Katsuki Bakugo prize figure (crouching/explosion pose)",
+          "manufacturer": "Banpresto",
+          "product_line": "",
+          "evidence": "Figure render includes 'BANPRESTO' watermark; pose and costume match common Banpresto prize-figure styling for Bakugo.",
+          "confidence": "medium"
+        },
+        {
+          "product_name": "My Hero Academia Katsuki Bakugo (hero costume) large-format figure (often listed as GRANDISTA-type in marketplaces)",
+          "manufacturer": "Banpresto",
+          "product_line": "(possibly Grandista)",
+          "evidence": "Single-character posed statue-style sculpt with detailed costume; some sellers tag large Banpresto Bakugo figures as GRANDISTA—needs confirmation by comparing exact sculpt/face and boots/knee-armor details.",
+          "confidence": "low"
+        },
+        {
+          "product_name": "The Amazing Heroes / similar Banpresto hero costume line – Katsuki Bakugo (attack pose)",
+          "manufacturer": "Banpresto",
+          "product_line": "(possibly THE AMAZING HEROES)",
+          "evidence": "Action-forward dynamic pose typical of Banpresto hero lines; exact line uncertain without box/base details.",
+          "confidence": "low"
+        }
+      ]
+    },
+    "retrieved_candidates": [
+      {
+        "title": "駿河屋 -<中古>爆豪勝己 「僕のヒーローアカデミア」 7TH SEASON FIGURE-KATSUKI BAKUGO-（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602288417",
+        "snippet": "사진 단서(‘BANPRESTO’ 워터마크)와 제조사(반프레스토)가 일치하고, ‘7TH SEASON FIGURE’ 라인으로 ‘폭호 카츠키’를 약 23cm 경품 피규어로 표기한 상품 상세 페이지입니다. 공격적인 포즈/전투 자세 계열의 반프레스토 히로아카 피규어를 찾는 경우 가장 직접적으로 맞물립니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp 7TH SEASON FIGURE-KATSUKI BAKUGO- 商品詳細"
+      },
+      {
+        "title": "駿河屋 - 〖買取〗爆豪勝己 「僕のヒーローアカデミア」 7TH SEASON FIGURE-KATSUKI BAKUGO-（フィギュア）",
+        "url": "https://www.suruga-ya.jp/kaitori/kaitori_detail/602288417",
+        "snippet": "위 상품과 동일 관리번호(602288417)로 연결되는 매입(買取) 페이지로, 샘플 이미지가 함께 실려 있어 ‘しゃがみ/손을 내미는’ 같은 자세 확인에 도움될 가능성이 큽니다. 반프레스토/히로아카/폭호 카츠키 경품 피규어로 명시되어 단서와 잘 맞습니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp \"FIGURE-KATSUKI BAKUGO\""
+      },
+      {
+        "title": "駿河屋 -<中古>爆豪勝己 「僕のヒーローアカデミア」 KING OF ARTIST -KATSUKI BAKUGO-（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602185376",
+        "snippet": "반프레스토의 대표 라인업인 KING OF ARTIST(KOA) 계열 ‘폭호 카츠키’ 상품 페이지입니다. 사용자가 말한 ‘폭발 스탠스/공격 포즈’와 같은 역동 포즈가 KOA에서 자주 나와, 7TH SEASON FIGURE가 아니라도 실물과 라인업이 헷갈린 경우의 유력한 근접 후보입니다.",
+        "source": "suruga-ya.jp",
+        "query": "Banpresto Katsuki Bakugo figure crouching pose hand forward"
+      }
+    ]
+  },
+  {
+    "filename": "gojo_luminasta.png",
+    "expected": {
+      "character": "Satoru Gojo",
+      "series": "Jujutsu Kaisen",
+      "expected_product_hint": "Luminasta"
+    },
+    "actual": {
+      "character": "Satoru Gojo",
+      "series": "Jujutsu Kaisen",
+      "manufacturer": "",
+      "product_line": "",
+      "estimated_product_name": "Satoru Gojo \"Luminasta\" prize figure (hands-forward technique pose, dark uniform)",
+      "confidence": "medium",
+      "notes": "This looks like Satoru Gojo from Jujutsu Kaisen based on hair/eyes, uniform, and signature casting pose. Exact manufacturer/line cannot be confirmed from the image alone (no logo/box text visible), but 'Luminasta' is a strong lead to include in searches.",
+      "search_queries_ja": [
+        "Luminasta 呪術廻戦 五条悟 フィギュア 術式 ポーズ 黒制服",
+        "SEGA Luminasta 五条悟 フィギュア 手を前に出す",
+        "呪術廻戦 五条悟 プライズ フィギュア 立ちポーズ 手",
+        "五条悟 フィギュア 目が見える（アイマスクなし） Luminasta"
+      ],
+      "search_queries_en": [
+        "SEGA Luminasta Satoru Gojo figure hands forward pose",
+        "Jujutsu Kaisen Satoru Gojo prize figure dark uniform no blindfold",
+        "Gojo technique casting pose figure blue eyes Luminasta"
+      ],
+      "product_candidates": [
+        {
+          "product_name": "Jujutsu Kaisen Satoru Gojo Luminasta (hands-forward technique pose)",
+          "manufacturer": "SEGA (possible)",
+          "product_line": "Luminasta (possible)",
+          "evidence": "User filename includes 'gojo_luminasta'; the sculpt matches common SEGA Luminasta promotional style; Gojo in dark uniform with both hands extended is a typical Luminasta-type prize figure presentation.",
+          "confidence": "low"
+        },
+        {
+          "product_name": "Jujutsu Kaisen Satoru Gojo prize figure (dark uniform, technique pose)",
+          "manufacturer": "",
+          "product_line": "",
+          "evidence": "Pose/outfit strongly indicate a Gojo prize figure; exact brand/line not visible in the crop.",
+          "confidence": "medium"
+        }
+      ]
+    },
+    "retrieved_candidates": [
+      {
+        "title": "駿河屋 -<中古>五条悟 「呪術廻戦 懐玉・玉折」 Luminasta“五条悟”虚式「ムラサキ”（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602287193",
+        "snippet": "SEGA(세가) Luminasta 라인업의 ‘고죠 사토루’ 프라이즈 피규어 상품 페이지입니다. 손을 앞으로 내밀어 술식을 발동하는(‘무라사키’) 포즈/검은 교복 계열 의상이라, 질문에서 말한 ‘손 앞으로 기술 포즈’와 가장 직접적으로 맞을 가능성이 큽니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp/product/detail Luminasta 五条悟 虚式 ムラサキ"
+      },
+      {
+        "title": "駿河屋 -<中古>五条悟 「呪術廻戦 懐玉・玉折」 Luminasta“五条悟”術式順転 出力最大『蒼』（フィギュア）",
+        "url": "https://www.suruga-ya.jp/product/detail/602266197",
+        "snippet": "‘출력 최대 『아오(蒼)』’ 버전의 고죠 사토루 Luminasta 프라이즈 피규어 페이지입니다. 파란 그라데이션 배경의 공식 사진/술식 연출 계열이라, 사진의 ‘기술 시전 포즈’ 추정과 잘 맞는 후보입니다(무라사키가 아니라 ‘아오’ 버전일 수도 있을 때 유효).",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp Luminasta 五条悟 フィギュア"
+      },
+      {
+        "title": "駿河屋 - 〖買取〗五条悟 「呪術廻戦」 Luminasta“五条悟”虚式『ムラサキ』（フィギュア）",
+        "url": "https://www.suruga-ya.jp/kaitori/kaitori_detail/602308265",
+        "snippet": "동일 Luminasta ‘고죠 사토루 무라사키’의 ‘매입(買取)’용 상세 페이지입니다. 판매 페이지(상품 상세)와 별도로 사진/명칭 확인에 도움되는 경우가 있어 보조 후보로 포함합니다.",
+        "source": "suruga-ya.jp",
+        "query": "site:suruga-ya.jp Luminasta 五条悟 虚式 ムラサキ"
+      }
+    ]
+  }
+]

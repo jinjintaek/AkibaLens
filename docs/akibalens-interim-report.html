@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AkibaLens 중간 개발 리포트</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: #152033;
+        background: #f4f7fb;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+          "Noto Sans KR", "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        background: #ffffff;
+      }
+
+      .cover {
+        min-height: 960px;
+        padding: 68px 64px;
+        color: #ffffff;
+        background:
+          linear-gradient(135deg, rgba(9, 30, 54, 0.96), rgba(21, 106, 126, 0.92)),
+          radial-gradient(circle at 85% 10%, rgba(237, 82, 103, 0.45), transparent 34%),
+          radial-gradient(circle at 18% 88%, rgba(255, 202, 80, 0.34), transparent 32%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .cover h1 {
+        margin: 22px 0 12px;
+        font-size: 58px;
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .cover .subtitle {
+        max-width: 740px;
+        font-size: 22px;
+        color: #d9eef5;
+      }
+
+      .badge-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+
+      .badge {
+        border: 1px solid rgba(255, 255, 255, 0.34);
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      .cover-meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .cover-card {
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 14px;
+      }
+
+      .cover-card strong {
+        display: block;
+        font-size: 13px;
+        color: #b8dce8;
+        margin-bottom: 6px;
+      }
+
+      .cover-card span {
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      section {
+        padding: 34px 48px;
+        border-bottom: 1px solid #e6edf5;
+        break-inside: avoid;
+      }
+
+      h2 {
+        margin: 0 0 18px;
+        font-size: 28px;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin: 24px 0 10px;
+        font-size: 18px;
+      }
+
+      p {
+        margin: 0 0 13px;
+      }
+
+      .lead {
+        font-size: 17px;
+        color: #33445c;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .card {
+        border: 1px solid #dbe6f1;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 18px;
+        break-inside: avoid;
+      }
+
+      .card.soft {
+        background: #f7fafc;
+      }
+
+      .metric {
+        font-size: 26px;
+        font-weight: 900;
+        color: #116c85;
+      }
+
+      .label {
+        color: #65758d;
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 12px;
+      }
+
+      .done {
+        color: #0b6b4b;
+        background: #e5f7ef;
+      }
+
+      .risk {
+        color: #9b4018;
+        background: #fff0e5;
+      }
+
+      .next {
+        color: #2451a6;
+        background: #eaf1ff;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-size: 13px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        vertical-align: top;
+        padding: 11px 10px;
+        border-bottom: 1px solid #e5edf5;
+      }
+
+      th {
+        color: #52647d;
+        background: #f4f7fb;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      ul {
+        margin: 10px 0 0 20px;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 7px;
+      }
+
+      code {
+        font-family: "SFMono-Regular", Consolas, monospace;
+        background: #eef3f8;
+        border-radius: 5px;
+        padding: 2px 5px;
+        font-size: 0.92em;
+      }
+
+      .figure {
+        margin: 18px 0 4px;
+        padding: 14px;
+        background: #f7fafc;
+        border: 1px solid #dbe6f1;
+        border-radius: 14px;
+        break-inside: avoid;
+      }
+
+      .figure img {
+        width: 100%;
+        display: block;
+        border-radius: 10px;
+        border: 1px solid #d7e1ec;
+        background: #ffffff;
+      }
+
+      .caption {
+        color: #667790;
+        font-size: 12px;
+        margin-top: 8px;
+      }
+
+      .sample-wrap {
+        display: grid;
+        grid-template-columns: 0.74fr 1.26fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .sample-img {
+        max-height: 520px;
+        object-fit: contain;
+      }
+
+      .ui-snapshot {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        background: #f8fbff;
+        border: 1px solid #dbe6f1;
+        border-radius: 16px;
+        padding: 14px;
+      }
+
+      .ui-panel {
+        background: #ffffff;
+        border: 1px solid #dbe6f1;
+        border-radius: 12px;
+        padding: 18px;
+      }
+
+      .ui-panel h3 {
+        margin-top: 0;
+        font-size: 20px;
+      }
+
+      .upload-box {
+        height: 300px;
+        border: 2px dashed #c8d6e7;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #f3f7fb;
+      }
+
+      .upload-box img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border: 0;
+      }
+
+      .field {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 14px;
+        border: 1px solid #e0e8f1;
+        border-radius: 9px;
+        padding: 10px 12px;
+        margin-bottom: 10px;
+      }
+
+      .field strong {
+        color: #697b94;
+        font-size: 12px;
+      }
+
+      .field span {
+        font-weight: 900;
+      }
+
+      .pipeline {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        align-items: stretch;
+      }
+
+      .pipe-step {
+        border: 1px solid #d7e3ef;
+        background: #f8fbff;
+        border-radius: 12px;
+        padding: 14px;
+        min-height: 122px;
+      }
+
+      .pipe-step .num {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        color: #ffffff;
+        background: #126c85;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+
+      .timeline {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 3%;
+        right: 3%;
+        top: 29px;
+        height: 3px;
+        background: #d7e3ef;
+      }
+
+      .milestone {
+        position: relative;
+        background: #ffffff;
+        border: 1px solid #dbe6f1;
+        border-radius: 12px;
+        padding: 15px;
+      }
+
+      .dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #126c85;
+        border: 4px solid #dff3f7;
+        margin-bottom: 14px;
+      }
+
+      .decision {
+        border-left: 5px solid #126c85;
+        background: #f4fafc;
+        padding: 16px 18px;
+        border-radius: 10px;
+      }
+
+      .footer-note {
+        color: #6a7b92;
+        font-size: 12px;
+      }
+
+      .page-break {
+        break-before: page;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="cover">
+        <div>
+          <div class="badge-row">
+            <span class="badge">AI Vision</span>
+            <span class="badge">Product Retrieval</span>
+            <span class="badge">Portfolio MVP</span>
+          </div>
+          <h1>AkibaLens<br />중간 개발 리포트</h1>
+          <p class="subtitle">
+            피규어 사진 기반 상품 식별 MVP의 설계, 구현 현황, 시행착오,
+            기술 선택 근거, 그리고 다음 개발 방향을 정리한 중간 산출물
+          </p>
+        </div>
+        <div class="cover-meta">
+          <div class="cover-card">
+            <strong>Project</strong>
+            <span>AkibaLens</span>
+          </div>
+          <div class="cover-card">
+            <strong>Report Date</strong>
+            <span>2026.06.09</span>
+          </div>
+          <div class="cover-card">
+            <strong>Current Stage</strong>
+            <span>Vision + Retrieval MVP</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>1. Executive Summary</h2>
+        <p class="lead">
+          AkibaLens는 사용자가 아키하바라, 돈키호테, 중고 피규어샵 등에서
+          발견한 피규어를 사진만으로 식별하고, 일본 쇼핑몰 검색 및 가격 비교로
+          이어갈 수 있도록 돕는 AI 쇼핑 보조 MVP이다.
+        </p>
+        <div class="grid-3">
+          <div class="card soft">
+            <div class="label">Completed</div>
+            <div class="metric">4 Phases</div>
+            <p>프로젝트 셋업, 업로드 UI, Vision API, 상품 후보 검색 1차 구현.</p>
+          </div>
+          <div class="card soft">
+            <div class="label">Current AI Flow</div>
+            <div class="metric">Vision + Web</div>
+            <p>OpenAI Vision으로 식별 단서를 만들고 OpenAI Web Search로 후보를 검색.</p>
+          </div>
+          <div class="card soft">
+            <div class="label">MVP Priority</div>
+            <div class="metric">2-4 weeks</div>
+            <p>자체 모델 학습보다 실제 사용 가능한 end-to-end 흐름 검증에 집중.</p>
+          </div>
+        </div>
+        <div class="decision">
+          <strong>핵심 결론:</strong>
+          Vision-only 방식은 캐릭터/작품 식별에는 어느 정도 유효하지만 정확한
+          제조사, 라인업, 상품명 식별에는 한계가 있었다. 따라서 AkibaLens의
+          MVP는 “이미지를 보고 정답을 단정하는 서비스”가 아니라 “이미지에서
+          검색 단서를 추출하고, 웹 검색 결과로 상품 후보를 좁히는 서비스”로
+          방향을 정리했다.
+        </div>
+      </section>
+
+      <section>
+        <h2>2. Product Context</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>사용자 문제</h3>
+            <ul>
+              <li>피규어 이름, 캐릭터명, 작품명, 제조사를 모른다.</li>
+              <li>일본어 상품명 검색이 어렵다.</li>
+              <li>가격 비교 이전에 검색어 생성부터 막힌다.</li>
+              <li>특히 박스 없이 진열된 피규어에서 문제가 커진다.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>MVP 목표</h3>
+            <ul>
+              <li>피규어 이미지 업로드.</li>
+              <li>AI Vision 기반 캐릭터/작품/시각 단서 추출.</li>
+              <li>상품 후보 검색 및 마켓플레이스 링크 생성.</li>
+              <li>사용자가 구매 판단을 시작할 수 있는 정보 제공.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-break">
+        <h2>3. Current MVP Snapshot</h2>
+        <p>
+          현재 UI는 업로드 이미지와 분석 결과를 좌우로 배치한다. 초기에는
+          “정답 표시” UI였지만, 현재는 실제 문제에 맞춰 “Retrieval Clues”
+          중심으로 개편되었다.
+        </p>
+        <div class="figure">
+          <div class="ui-snapshot">
+            <div class="ui-panel">
+              <h3>Image Upload</h3>
+              <p class="footer-note">JPG, PNG, WEBP / 최대 8MB</p>
+              <div class="upload-box">
+                <img src="assets/reze-nendoroid-sample.png" alt="Reze Nendoroid sample" />
+              </div>
+              <p class="caption">샘플 이미지: 박스 없는 넨도로이드 피규어 사진</p>
+            </div>
+            <div class="ui-panel">
+              <h3>Retrieval Clues</h3>
+              <div class="field">
+                <strong>Character</strong>
+                <span>Reze</span>
+              </div>
+              <div class="field">
+                <strong>Series</strong>
+                <span>Chainsaw Man</span>
+              </div>
+              <div class="field">
+                <strong>Manufacturer</strong>
+                <span style="color:#91a0b5">Not visible</span>
+              </div>
+              <div class="field">
+                <strong>Product Line</strong>
+                <span style="color:#91a0b5">Not visible</span>
+              </div>
+              <div class="field">
+                <strong>Estimated</strong>
+                <span>Nendoroid Reze candidate, purple hair, green eyes, white flower</span>
+              </div>
+              <div class="field">
+                <strong>Confidence</strong>
+                <span>medium</span>
+              </div>
+            </div>
+          </div>
+          <p class="caption">
+            Figure 1. 현재 구현 방향을 반영한 UI 스냅샷. 제조사와 라인업은
+            보이지 않으면 단정하지 않고, 검색 단서 중심으로 결과를 구성한다.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>4. Implementation Status</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Status</th>
+              <th>구현 내용</th>
+              <th>검증</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Project Setup</td>
+              <td><span class="status done">Done</span></td>
+              <td>Next.js, TypeScript, Tailwind CSS, FastAPI 기본 구조 생성.</td>
+              <td>Frontend/Backend 로컬 실행 확인.</td>
+            </tr>
+            <tr>
+              <td>Image Upload UI</td>
+              <td><span class="status done">Done</span></td>
+              <td>이미지 업로드, 미리보기, 파일 형식/크기 검증, 로딩/에러 상태.</td>
+              <td>Next.js build 및 브라우저 화면 확인.</td>
+            </tr>
+            <tr>
+              <td>Vision API</td>
+              <td><span class="status done">Done</span></td>
+              <td>OpenAI Responses API 이미지 입력, 구조화된 JSON 응답, 저정보 이미지 guard.</td>
+              <td>실제 OpenAI 요청 도달 및 quota 문제 해결 후 분석 성공.</td>
+            </tr>
+            <tr>
+              <td>Retrieval Prep</td>
+              <td><span class="status done">Done</span></td>
+              <td>검색 단서 중심 스키마: subject candidates, visual features, search queries.</td>
+              <td>UI를 Retrieval Clues 중심으로 개편.</td>
+            </tr>
+            <tr>
+              <td>Marketplace Search</td>
+              <td><span class="status next">In Progress</span></td>
+              <td>AmiAmi, Mandarake, Suruga-ya 검색 링크 및 OpenAI Web Search 후보 검색.</td>
+              <td>Reze Nendoroid 검색 단서로 Good Smile 공식 페이지 검색 성공.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="page-break">
+        <h2>5. Current Technical Architecture</h2>
+        <div class="pipeline">
+          <div class="pipe-step">
+            <div class="num">1</div>
+            <strong>Image Upload</strong>
+            <p>Next.js UI에서 JPG/PNG/WEBP 업로드 및 미리보기.</p>
+          </div>
+          <div class="pipe-step">
+            <div class="num">2</div>
+            <strong>FastAPI Analyze</strong>
+            <p><code>/api/analyze</code> multipart endpoint로 이미지 전달.</p>
+          </div>
+          <div class="pipe-step">
+            <div class="num">3</div>
+            <strong>OpenAI Vision</strong>
+            <p>캐릭터, 작품, 시각 특징, 검색 쿼리 구조화.</p>
+          </div>
+          <div class="pipe-step">
+            <div class="num">4</div>
+            <strong>Web Search</strong>
+            <p>OpenAI Web Search로 상품 후보 페이지 검색.</p>
+          </div>
+          <div class="pipe-step">
+            <div class="num">5</div>
+            <strong>Result UI</strong>
+            <p>검색 단서, 후보 링크, 마켓플레이스 검색 링크 표시.</p>
+          </div>
+        </div>
+        <h3>주요 코드 위치</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>영역</th>
+              <th>파일</th>
+              <th>역할</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Frontend</td>
+              <td><code>frontend/src/app/upload-experience.tsx</code></td>
+              <td>업로드 UI, 결과 표시, 검색 후보 UI.</td>
+            </tr>
+            <tr>
+              <td>API</td>
+              <td><code>backend/app/api/analyze.py</code></td>
+              <td>이미지 검증, Vision 호출, retrieval 결과 조합.</td>
+            </tr>
+            <tr>
+              <td>Vision</td>
+              <td><code>backend/app/services/figure_identifier.py</code></td>
+              <td>OpenAI Vision prompt, structured output, low-information guard.</td>
+            </tr>
+            <tr>
+              <td>Retrieval</td>
+              <td><code>backend/app/services/product_retrieval.py</code></td>
+              <td>OpenAI Web Search, Google/DuckDuckGo fallback, 후보 정리.</td>
+            </tr>
+            <tr>
+              <td>Schema</td>
+              <td><code>backend/app/schemas/analyze.py</code></td>
+              <td>분석 결과와 검색 후보 응답 모델.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>6. Key Experiments and Learnings</h2>
+        <div class="sample-wrap">
+          <div class="figure" style="margin:0">
+            <img class="sample-img" src="assets/reze-nendoroid-sample.png" alt="Reze Nendoroid sample" />
+            <p class="caption">Figure 2. 박스 없이 촬영된 Reze Nendoroid 샘플.</p>
+          </div>
+          <div class="card">
+            <h3>관찰 결과</h3>
+            <ul>
+              <li>Vision-only는 캐릭터/작품을 맞출 때도 있지만, 이미지에 따라 틀릴 수 있었다.</li>
+              <li>제조사/라인업은 실물 사진만으로 보이지 않는 경우가 많아 무리하게 단정하면 품질이 떨어졌다.</li>
+              <li>웹 ChatGPT가 더 잘 맞춘 사례는 단순 모델 차이보다 검색/추론/후보 검증 흐름 차이가 컸다.</li>
+              <li>OpenAI Web Search는 정확한 텍스트 단서가 주어지면 Good Smile 공식 상품 페이지까지 잘 찾아왔다.</li>
+              <li>다만 Web Search는 reverse image search가 아니므로 Vision 후보가 틀리면 검색도 함께 흔들릴 수 있다.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-break">
+        <h2>7. Difficulties, Root Causes, and Resolutions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>문제</th>
+              <th>원인</th>
+              <th>해결/대응</th>
+              <th>남은 리스크</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>OpenAI API quota 오류</td>
+              <td>Free/Prototype 플랜과 실제 API credit 개념이 혼동됨.</td>
+              <td>API billing/credit 충전 후 실제 Vision 요청 도달 확인.</td>
+              <td>검색 도구 사용 시 추가 비용 관리 필요.</td>
+            </tr>
+            <tr>
+              <td>제조사/라인업 누락</td>
+              <td>박스 없는 실물 사진에서는 해당 정보가 직접 보이지 않음.</td>
+              <td>억지 확정보다 <code>unknown_fields</code>, <code>visual_features</code>, 검색 쿼리 중심으로 스키마 개편.</td>
+              <td>정확한 상품명 확정에는 retrieval 및 reranking 필요.</td>
+            </tr>
+            <tr>
+              <td>Vision-only 오식별</td>
+              <td>API의 이미지 인식만으로는 세부 상품 후보 식별이 불안정함.</td>
+              <td>Vision 결과를 “정답”이 아니라 “검색 가설”로 취급하도록 프롬프트와 UI 수정.</td>
+              <td>어려운 이미지에서는 여전히 후보군이 흔들릴 수 있음.</td>
+            </tr>
+            <tr>
+              <td>DuckDuckGo HTML 검색 불안정</td>
+              <td>HTML scraping 방식은 challenge/차단/파싱 실패에 취약.</td>
+              <td>무료 실험용 fallback으로만 유지.</td>
+              <td>운영용 검색에는 부적합.</td>
+            </tr>
+            <tr>
+              <td>Google Custom Search 403</td>
+              <td>공식 문서상 Custom Search JSON API가 신규 고객에게 닫힘. 콘솔에서 사용 설정됨으로 보여도 API key 호출이 막힘.</td>
+              <td>Google provider를 보류하고 OpenAI Web Search로 전환.</td>
+              <td>Google CSE 기반 설계는 신규 프로젝트에서 재현성이 낮음.</td>
+            </tr>
+            <tr>
+              <td>응답 속도 증가</td>
+              <td>Vision 분석과 Web Search를 여러 번 직렬 실행.</td>
+              <td>기본값을 <code>OPENAI_IDENTIFICATION_WEB_SEARCH=false</code>, <code>SEARCH_RESULT_LIMIT=3</code>로 조정.</td>
+              <td>추후 식별 결과 먼저 보여주고 검색은 비동기로 분리 필요.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>8. Alternatives Considered</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>대안</th>
+              <th>장점</th>
+              <th>단점</th>
+              <th>결정</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vision-only</td>
+              <td>구현 단순, 비용과 지연시간 낮음.</td>
+              <td>정확한 상품명/라인업 식별 한계.</td>
+              <td>기본 식별 단계로 유지.</td>
+            </tr>
+            <tr>
+              <td>DuckDuckGo/Bing HTML</td>
+              <td>무료 실험 가능.</td>
+              <td>불안정, 차단 가능, 파싱 유지보수 부담.</td>
+              <td>fallback/실험용으로만 유지.</td>
+            </tr>
+            <tr>
+              <td>Google Custom Search API</td>
+              <td>구조화된 검색 JSON, 도메인 제한 가능.</td>
+              <td>신규 고객 접근 제한으로 403 발생.</td>
+              <td>보류.</td>
+            </tr>
+            <tr>
+              <td>Brave Search API</td>
+              <td>검색 API로 안정적이고 구현 명확.</td>
+              <td>별도 API 키와 요금/한도 관리 필요.</td>
+              <td>대안 후보로 유지.</td>
+            </tr>
+            <tr>
+              <td>SerpAPI</td>
+              <td>Google 검색 결과에 가까운 결과 제공.</td>
+              <td>무료 한도 작고 유료 전환 빠를 수 있음.</td>
+              <td>나중에 정확도 비교 후보.</td>
+            </tr>
+            <tr>
+              <td>OpenAI Web Search</td>
+              <td>기존 OpenAI 키로 Vision + Search 흐름 통합, 도메인 필터 가능, citations/source 활용 가능.</td>
+              <td>응답 지연과 tool call 비용 발생.</td>
+              <td><strong>MVP 기본 retrieval 방식으로 선택.</strong></td>
+            </tr>
+            <tr>
+              <td>CLIP/SigLIP/Fine-tuning</td>
+              <td>장기적으로 도메인 특화 정확도 향상 가능.</td>
+              <td>데이터셋 구축, 학습, 평가 비용이 큼.</td>
+              <td>MVP 이후 검토.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="decision">
+          <strong>선택 근거:</strong>
+          MVP의 목표는 모델 학습이 아니라 실제 사용 가능한 workflow 검증이다.
+          따라서 지금은 별도 검색 인프라를 크게 만들기보다 OpenAI Web Search로
+          product retrieval을 빠르게 붙이고, 사용자 가치와 실패 패턴을 먼저 확인하는
+          방식이 가장 현실적이다.
+        </div>
+      </section>
+
+      <section class="page-break">
+        <h2>9. Timeline</h2>
+        <div class="timeline">
+          <div class="milestone">
+            <div class="dot"></div>
+            <strong>Step 1</strong>
+            <p>README, MVP 계획, PDF 개발 계획, progress tracker 작성.</p>
+          </div>
+          <div class="milestone">
+            <div class="dot"></div>
+            <strong>Step 2</strong>
+            <p>Next.js/FastAPI scaffold, 업로드 UI, 분석 endpoint 구현.</p>
+          </div>
+          <div class="milestone">
+            <div class="dot"></div>
+            <strong>Step 3</strong>
+            <p>OpenAI Vision 연결, 구조화된 분석 결과 및 Retrieval Clues UI.</p>
+          </div>
+          <div class="milestone">
+            <div class="dot"></div>
+            <strong>Step 4</strong>
+            <p>검색 API 실험, Google CSE 이슈 확인, OpenAI Web Search 전환.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>10. Current Configuration</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>설정</th>
+              <th>현재값</th>
+              <th>의미</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>OPENAI_MODEL</code></td>
+              <td><code>gpt-5.2</code> 사용 가능</td>
+              <td>이미지 분석 모델. 실제 값은 로컬 <code>.env</code>에서 관리.</td>
+            </tr>
+            <tr>
+              <td><code>OPENAI_IMAGE_DETAIL</code></td>
+              <td><code>high</code></td>
+              <td>피규어 세부 특징 인식 개선을 위해 high detail 사용.</td>
+            </tr>
+            <tr>
+              <td><code>SEARCH_PROVIDER</code></td>
+              <td><code>openai</code></td>
+              <td>상품 후보 검색 기본 provider를 OpenAI Web Search로 설정.</td>
+            </tr>
+            <tr>
+              <td><code>OPENAI_IDENTIFICATION_WEB_SEARCH</code></td>
+              <td><code>false</code></td>
+              <td>속도 개선을 위해 식별 단계에서는 Web Search를 끄고, retrieval 단계에서만 사용.</td>
+            </tr>
+            <tr>
+              <td><code>SEARCH_RESULT_LIMIT</code></td>
+              <td><code>3</code></td>
+              <td>검색 후보 수를 줄여 응답 시간과 비용을 제어.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>11. Remaining Problems</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>정확도</h3>
+            <p>
+              Web Search는 reverse image search가 아니므로 Vision이 틀린 단서를
+              만들면 검색 결과도 틀린 방향으로 갈 수 있다. 다음 단계에서는
+              subject candidates를 더 다양하게 만들고, 검색 결과를 별도 reranker로
+              재평가해야 한다.
+            </p>
+          </div>
+          <div class="card">
+            <h3>속도</h3>
+            <p>
+              Vision + Web Search를 한 요청에서 모두 기다리면 UX가 느리게 느껴진다.
+              식별 결과를 먼저 보여주고, 상품 후보 검색은 비동기 job 또는 staged UI로
+              분리하는 것이 필요하다.
+            </p>
+          </div>
+          <div class="card">
+            <h3>가격 비교</h3>
+            <p>
+              현재는 검색 링크와 후보 페이지 중심이다. 실제 가격 비교 테이블을 만들려면
+              쇼핑몰별 HTML 구조, robots/정책, 파싱 안정성을 별도로 검토해야 한다.
+            </p>
+          </div>
+          <div class="card">
+            <h3>평가 데이터</h3>
+            <p>
+              Reze, Power 등 개별 샘플 테스트는 했지만 체계적인 benchmark는 아직 없다.
+              10-30장 규모의 테스트셋과 success criteria를 만들어야 정확도 개선을
+              숫자로 관리할 수 있다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-break">
+        <h2>12. Next Action Plan</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>우선순위</th>
+              <th>작업</th>
+              <th>목표</th>
+              <th>예상 효과</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Staged UI</td>
+              <td>식별 결과를 먼저 표시하고 상품 검색은 별도 로딩 처리.</td>
+              <td>사용자가 느끼는 대기시간 감소.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Candidate Reranker</td>
+              <td>Vision 후보와 Web Search 후보를 비교해 top 1-3 랭킹.</td>
+              <td>상품명/라인업 정확도 개선.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Evaluation Set</td>
+              <td>피규어 이미지 10-30장, 정답 label, 성공 기준 정의.</td>
+              <td>개선 여부를 감이 아니라 수치로 판단.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Price Comparison Mock</td>
+              <td>가격 비교 UI를 먼저 mock 데이터로 구현.</td>
+              <td>MVP 사용자 흐름 완성도 향상.</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Marketplace Policy Check</td>
+              <td>AmiAmi/Mandarake/Suruga-ya 파싱 가능성 및 정책 확인.</td>
+              <td>운영 가능한 가격 수집 방식 결정.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>13. Portfolio Value</h2>
+        <p class="lead">
+          AkibaLens는 단순 CRUD 앱이 아니라, 실제 사용자 문제에서 출발해 AI 모델의
+          불확실성, 검색 기반 보강, UX 대기시간, 외부 API 제약까지 다루는 프로젝트이다.
+        </p>
+        <div class="grid-3">
+          <div class="card soft">
+            <h3>Problem Discovery</h3>
+            <p>개인 경험 기반의 구체적인 pain point와 명확한 target user.</p>
+          </div>
+          <div class="card soft">
+            <h3>AI Product Thinking</h3>
+            <p>Vision output을 정답이 아니라 retrieval clue로 다루는 제품 설계.</p>
+          </div>
+          <div class="card soft">
+            <h3>Engineering Judgment</h3>
+            <p>자체 모델 학습 대신 API 기반 MVP로 빠른 검증을 선택.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>14. References</h2>
+        <ul>
+          <li>OpenAI Web Search Tool: https://platform.openai.com/docs/guides/tools-web-search</li>
+          <li>OpenAI Tools Guide: https://platform.openai.com/docs/guides/tools</li>
+          <li>OpenAI API Pricing: https://openai.com/api/pricing/</li>
+          <li>Google Custom Search JSON API Overview: https://developers.google.com/custom-search/v1/overview</li>
+        </ul>
+        <p class="footer-note">
+          이 리포트는 2026-06-09 기준 AkibaLens 로컬 개발 상태와 실제 실험 결과를 바탕으로 작성되었다.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>AkibaLens MVP 개발 계획서</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: #1f2933;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+      font-size: 12.5px;
+      line-height: 1.6;
+      background: #ffffff;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      color: #111827;
+      line-height: 1.25;
+      page-break-after: avoid;
+    }
+
+    h1 {
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-top: 26px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #d7dee8;
+      font-size: 19px;
+    }
+
+    h3 {
+      margin-top: 18px;
+      font-size: 15px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul,
+    ol {
+      margin: 7px 0 7px 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 3px 0;
+    }
+
+    .cover {
+      padding: 8px 0 16px;
+      border-bottom: 4px solid #1f6f8b;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: #52616f;
+      font-size: 14px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .meta-item {
+      padding: 10px 11px;
+      border: 1px solid #d9e2ec;
+      border-radius: 7px;
+      background: #f8fafc;
+    }
+
+    .meta-label {
+      color: #697a8a;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      margin-top: 3px;
+      color: #111827;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .callout {
+      margin: 14px 0;
+      padding: 12px 14px;
+      border-left: 5px solid #1f6f8b;
+      border-radius: 6px;
+      background: #eef8fb;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .box {
+      padding: 12px 13px;
+      border: 1px solid #d9e2ec;
+      border-radius: 7px;
+      background: #ffffff;
+      page-break-inside: avoid;
+    }
+
+    .box-title {
+      margin-bottom: 5px;
+      color: #164e63;
+      font-weight: 800;
+    }
+
+    table {
+      width: 100%;
+      margin: 10px 0 14px;
+      border-collapse: collapse;
+      page-break-inside: avoid;
+    }
+
+    th,
+    td {
+      padding: 8px 9px;
+      border: 1px solid #d7dee8;
+      vertical-align: top;
+    }
+
+    th {
+      color: #111827;
+      background: #edf2f7;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .num {
+      width: 42px;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .phase {
+      width: 98px;
+      font-weight: 800;
+      color: #164e63;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: #e6f4ea;
+      color: #166534;
+      font-size: 10.5px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .gantt {
+      margin-top: 12px;
+      border: 1px solid #cbd5df;
+      border-radius: 8px;
+      overflow: hidden;
+      page-break-inside: avoid;
+    }
+
+    .gantt-row {
+      display: grid;
+      grid-template-columns: 190px repeat(8, 1fr);
+      min-height: 34px;
+      border-bottom: 1px solid #e3e8ef;
+    }
+
+    .gantt-row:last-child {
+      border-bottom: 0;
+    }
+
+    .gantt-head {
+      background: #edf2f7;
+      color: #111827;
+      font-weight: 800;
+    }
+
+    .task-name,
+    .week-cell {
+      padding: 8px 7px;
+      border-right: 1px solid #e3e8ef;
+      display: flex;
+      align-items: center;
+    }
+
+    .week-cell {
+      justify-content: center;
+      font-size: 10.5px;
+    }
+
+    .week-cell:last-child {
+      border-right: 0;
+    }
+
+    .bar {
+      width: 100%;
+      height: 15px;
+      border-radius: 999px;
+      background: #1f6f8b;
+    }
+
+    .bar.alt {
+      background: #d97706;
+    }
+
+    .bar.green {
+      background: #2f855a;
+    }
+
+    .bar.gray {
+      background: #64748b;
+    }
+
+    .muted {
+      color: #64748b;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: #64748b;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <h1>AkibaLens MVP 개발 계획서</h1>
+    <p class="subtitle">피규어 사진 기반 상품 식별 및 일본 쇼핑몰 가격 비교 MVP 실행 계획</p>
+    <div class="meta">
+      <div class="meta-item">
+        <div class="meta-label">Project</div>
+        <div class="meta-value">AkibaLens</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Duration</div>
+        <div class="meta-value">2~4주</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Goal</div>
+        <div class="meta-value">사용 가능한 MVP</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Priority</div>
+        <div class="meta-value">과도한 엔지니어링 방지</div>
+      </div>
+    </div>
+  </section>
+
+  <h2>1. MVP 방향성</h2>
+  <div class="callout">
+    AkibaLens의 MVP는 사용자가 피규어 사진을 업로드하면 AI Vision Model이 상품 후보를 식별하고, 일본 쇼핑몰 가격 비교 결과를 제공하여 구매 판단을 돕는 end-to-end 흐름을 구현하는 것이다.
+  </div>
+  <p>초기 버전의 목적은 당장 사업화가 아니라 실제 사용 가능한 제품을 빠르게 만들고, 사용자 니즈와 기술적 가능성을 검증하는 것이다. 따라서 자체 모델 학습, 복잡한 추천 시스템, 결제, 구매 대행 기능은 제외한다.</p>
+
+  <div class="grid-2">
+    <div class="box">
+      <div class="box-title">MVP에서 검증할 것</div>
+      <ul>
+        <li>피규어 사진만으로 유의미한 상품 후보를 제공할 수 있는가</li>
+        <li>AI가 생성한 검색 키워드가 실제 가격 검색에 도움이 되는가</li>
+        <li>라이트 유저와 일본 여행객의 구매 판단을 줄여주는가</li>
+        <li>2~4주 안에 배포 가능한 구조로 구현 가능한가</li>
+      </ul>
+    </div>
+    <div class="box">
+      <div class="box-title">초기 제외 범위</div>
+      <ul>
+        <li>자체 CV 모델 학습, CLIP Fine-tuning, CNN 학습</li>
+        <li>복잡한 추천 시스템</li>
+        <li>결제 기능과 구매 대행 기능</li>
+        <li>모든 쇼핑몰의 완전 자동 크롤링</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>2. 실행 우선순위</h2>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">순서</th>
+        <th>작업</th>
+        <th>목표</th>
+        <th>완료 기준</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="num">1</td>
+        <td>프로젝트 구조 생성</td>
+        <td>Next.js, FastAPI, 기본 디렉터리와 환경 변수 구조 준비</td>
+        <td>로컬에서 Frontend와 Backend가 각각 실행됨</td>
+      </tr>
+      <tr>
+        <td class="num">2</td>
+        <td>Image Upload 구현</td>
+        <td>사용자가 피규어 이미지를 업로드하고 미리보기 확인</td>
+        <td>이미지 파일 검증 및 업로드 요청 성공</td>
+      </tr>
+      <tr>
+        <td class="num">3</td>
+        <td>Figure Identification 구현</td>
+        <td>OpenAI Vision 또는 Gemini Vision으로 상품 정보 추정</td>
+        <td>캐릭터명, 작품명, 제조사, 시리즈명, 추정 상품명 JSON 반환</td>
+      </tr>
+      <tr>
+        <td class="num">4</td>
+        <td>결과 UI 구현</td>
+        <td>식별 결과를 사용자가 읽기 쉽게 표시</td>
+        <td>분석 결과 카드와 검색 키워드 표시</td>
+      </tr>
+      <tr>
+        <td class="num">5</td>
+        <td>Price Comparison Mock 구현</td>
+        <td>마켓플레이스 검색 연동 전 가격 비교 UI 검증</td>
+        <td>AmiAmi, Mandarake, Suruga-ya 가격 테이블 표시</td>
+      </tr>
+      <tr>
+        <td class="num">6</td>
+        <td>Marketplace Search 1차 연동</td>
+        <td>검색 URL 생성 또는 간단 검색 결과 수집</td>
+        <td>식별 결과 기반 쇼핑몰 검색 링크 또는 결과 표시</td>
+      </tr>
+      <tr>
+        <td class="num">7</td>
+        <td>배포 및 포트폴리오 정리</td>
+        <td>실제 접근 가능한 MVP와 설명 자료 준비</td>
+        <td>Vercel/Railway 배포, README와 데모 시나리오 정리</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. 4주 개발 간트차트</h2>
+  <p class="muted">기준: 1주를 전반/후반으로 나누어 총 8개 구간으로 계획한다. 2주 MVP를 목표로 할 경우 Week 1~2의 핵심 기능을 우선 완료하고, Week 3~4는 개선 및 배포 안정화로 압축한다.</p>
+
+  <div class="gantt">
+    <div class="gantt-row gantt-head">
+      <div class="task-name">작업</div>
+      <div class="week-cell">W1-A</div>
+      <div class="week-cell">W1-B</div>
+      <div class="week-cell">W2-A</div>
+      <div class="week-cell">W2-B</div>
+      <div class="week-cell">W3-A</div>
+      <div class="week-cell">W3-B</div>
+      <div class="week-cell">W4-A</div>
+      <div class="week-cell">W4-B</div>
+    </div>
+    <div class="gantt-row">
+      <div class="task-name">요구사항 정리 / 범위 고정</div>
+      <div class="week-cell"><div class="bar gray"></div></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+    </div>
+    <div class="gantt-row">
+      <div class="task-name">프로젝트 세팅</div>
+      <div class="week-cell"><div class="bar"></div></div>
+      <div class="week-cell"><div class="bar"></div></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+    </div>
+    <div class="gantt-row">
+      <div class="task-name">Image Upload</div>
+      <div class="week-cell"></div>
+      <div class="week-cell"><div class="bar"></div></div>
+      <div class="week-cell"><div class="bar"></div></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+    </div>
+    <div class="gantt-row">
+      <div class="task-name">Vision API 연동</div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"><div class="bar alt"></div></div>
+      <div class="week-cell"><div class="bar alt"></div></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+    </div>
+    <div class="gantt-row">
+      <div class="task-name">식별 결과 UI</div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"><div class="bar"></div></div>
+      <div class="week-cell"><div class="bar"></div></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+    </div>
+    <div class="gantt-row">
+      <div class="task-name">가격 비교 Mock</div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"><div class="bar green"></div></div>
+      <div class="week-cell"><div class="bar green"></div></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+    </div>
+    <div class="gantt-row">
+      <div class="task-name">Marketplace Search 1차</div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"><div class="bar alt"></div></div>
+      <div class="week-cell"><div class="bar alt"></div></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+    </div>
+    <div class="gantt-row">
+      <div class="task-name">DB / 기록 저장 최소 구현</div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"><div class="bar gray"></div></div>
+      <div class="week-cell"><div class="bar gray"></div></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+    </div>
+    <div class="gantt-row">
+      <div class="task-name">QA / 예외 처리</div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"><div class="bar green"></div></div>
+      <div class="week-cell"><div class="bar green"></div></div>
+      <div class="week-cell"></div>
+    </div>
+    <div class="gantt-row">
+      <div class="task-name">배포 / 포트폴리오 정리</div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"></div>
+      <div class="week-cell"><div class="bar"></div></div>
+      <div class="week-cell"><div class="bar"></div></div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <h2>4. 주차별 상세 계획</h2>
+
+  <h3>Week 1. 프로젝트 세팅과 이미지 업로드</h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="phase">구분</th>
+        <th>작업 내용</th>
+        <th>산출물</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="phase">Frontend</td>
+        <td>Next.js, TypeScript, Tailwind CSS 프로젝트 생성. 업로드 화면, 이미지 미리보기, 분석 버튼 UI 구현.</td>
+        <td>이미지 업로드 페이지</td>
+      </tr>
+      <tr>
+        <td class="phase">Backend</td>
+        <td>FastAPI 프로젝트 생성. 이미지 업로드 endpoint, 파일 검증, 임시 분석 응답 endpoint 구현.</td>
+        <td>기본 API 서버</td>
+      </tr>
+      <tr>
+        <td class="phase">Infra</td>
+        <td>.env.example, CORS 설정, 로컬 실행 스크립트 정리.</td>
+        <td>로컬 개발 환경</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Week 2. Vision API 연동과 결과 UI</h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="phase">구분</th>
+        <th>작업 내용</th>
+        <th>산출물</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="phase">AI</td>
+        <td>OpenAI Vision 또는 Gemini Vision API 연동. 이미지에서 캐릭터명, 작품명, 제조사, 시리즈명, 추정 상품명 추출.</td>
+        <td>분석 결과 JSON</td>
+      </tr>
+      <tr>
+        <td class="phase">Prompt</td>
+        <td>피규어 식별 전용 프롬프트 설계. 불확실한 경우 후보와 신뢰도를 반환하도록 구조화.</td>
+        <td>프롬프트 템플릿</td>
+      </tr>
+      <tr>
+        <td class="phase">Frontend</td>
+        <td>분석 결과 카드, 후보 상품 리스트, 일본어/영어 검색 키워드 표시.</td>
+        <td>식별 결과 화면</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Week 3. 가격 비교와 Marketplace Search 1차</h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="phase">구분</th>
+        <th>작업 내용</th>
+        <th>산출물</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="phase">Price UI</td>
+        <td>AmiAmi, Mandarake, Suruga-ya 기준 가격 비교 테이블 구현. 우선 mock 데이터로 UI와 데이터 구조 검증.</td>
+        <td>가격 비교 테이블</td>
+      </tr>
+      <tr>
+        <td class="phase">Search</td>
+        <td>식별 결과 기반 검색 URL 생성. 가능한 경우 검색 결과 수집 또는 외부 검색 링크 제공.</td>
+        <td>쇼핑몰 검색 연결</td>
+      </tr>
+      <tr>
+        <td class="phase">Database</td>
+        <td>분석 요청, 상품 후보, 가격 결과 저장을 위한 최소 PostgreSQL 스키마 설계.</td>
+        <td>초기 DB 스키마</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Week 4. QA, 배포, 포트폴리오 정리</h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="phase">구분</th>
+        <th>작업 내용</th>
+        <th>산출물</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="phase">QA</td>
+        <td>이미지 형식 오류, API 실패, 식별 실패, 가격 결과 없음 등 예외 처리.</td>
+        <td>안정화된 MVP</td>
+      </tr>
+      <tr>
+        <td class="phase">Deploy</td>
+        <td>Frontend는 Vercel, Backend와 DB는 Railway 또는 Render에 배포.</td>
+        <td>접근 가능한 데모 URL</td>
+      </tr>
+      <tr>
+        <td class="phase">Portfolio</td>
+        <td>README, 아키텍처, 기술 의사결정, 한계점, 향후 로드맵 정리.</td>
+        <td>취업용 포트폴리오 문서</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>5. 권장 디렉터리 구조</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>경로</th>
+        <th>역할</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>frontend/</strong></td>
+        <td>Next.js, TypeScript, Tailwind CSS 기반 사용자 인터페이스</td>
+      </tr>
+      <tr>
+        <td><strong>backend/</strong></td>
+        <td>FastAPI 기반 이미지 분석, Vision API 호출, 검색/가격 비교 API</td>
+      </tr>
+      <tr>
+        <td><strong>docs/</strong></td>
+        <td>기획서, MVP 계획서, 아키텍처 문서, 발표 자료</td>
+      </tr>
+      <tr>
+        <td><strong>scripts/</strong></td>
+        <td>개발 보조 스크립트, 데이터 수집 실험 코드</td>
+      </tr>
+      <tr>
+        <td><strong>.env.example</strong></td>
+        <td>API key, DB URL 등 환경 변수 샘플</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>6. MVP 완료 기준</h2>
+  <ol>
+    <li>사용자가 웹에서 피규어 이미지를 업로드할 수 있다.</li>
+    <li>Backend가 Vision API를 호출하여 구조화된 JSON 결과를 반환한다.</li>
+    <li>Frontend가 캐릭터명, 작품명, 제조사, 시리즈명, 추정 상품명을 표시한다.</li>
+    <li>AI 결과 기반 일본어/영어 검색 키워드를 제공한다.</li>
+    <li>AmiAmi, Mandarake, Suruga-ya 기준 가격 비교 UI를 제공한다.</li>
+    <li>최소 3~5개의 실제 피규어 이미지로 데모 시나리오를 만들 수 있다.</li>
+    <li>README에 문제 정의, 아키텍처, 실행 방법, 한계점, 향후 계획이 정리되어 있다.</li>
+  </ol>
+
+  <h2>7. 리스크와 대응</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>리스크</th>
+        <th>영향</th>
+        <th>대응 전략</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vision API가 정확한 상품명을 맞히지 못함</td>
+        <td>상품 식별 품질 저하</td>
+        <td>정답 하나가 아니라 후보 리스트, 신뢰도, 검색 키워드 중심으로 설계</td>
+      </tr>
+      <tr>
+        <td>쇼핑몰 크롤링이 막히거나 불안정함</td>
+        <td>가격 검색 자동화 지연</td>
+        <td>초기에는 검색 URL 생성과 mock 가격 비교 UI를 먼저 구현</td>
+      </tr>
+      <tr>
+        <td>구현 범위가 커짐</td>
+        <td>2~4주 내 MVP 실패</td>
+        <td>결제, 추천, 자체 모델 학습, 구매 대행은 명확히 제외</td>
+      </tr>
+      <tr>
+        <td>DB 설계가 과해짐</td>
+        <td>개발 속도 저하</td>
+        <td>초기에는 분석 결과와 가격 결과 저장에 필요한 최소 테이블만 설계</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>8. 다음 실행 작업</h2>
+  <p>문서 작성 이후 바로 진행할 첫 개발 작업은 프로젝트 scaffold 생성이다.</p>
+  <ol>
+    <li><span class="status">Next</span> <strong>frontend/</strong> Next.js + TypeScript + Tailwind CSS 생성</li>
+    <li><span class="status">Next</span> <strong>backend/</strong> FastAPI 기본 서버 생성</li>
+    <li><span class="status">Next</span> 이미지 업로드 API와 업로드 UI 연결</li>
+  </ol>
+
+  <p class="footer-note">본 계획서는 AkibaLens README의 프로젝트 정의를 기반으로 작성한 실제 MVP 실행 문서입니다.</p>
+</body>
+</html>
