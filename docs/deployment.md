@@ -75,10 +75,16 @@ NEXT_PUBLIC_API_BASE_URL=https://your-render-backend.onrender.com
 
 ## 3. 배포 후 확인
 
+현재 배포 URL:
+
+- Frontend: https://frontend-ten-lake-39.vercel.app
+- Backend: https://akibalens.onrender.com
+- Backend health check: https://akibalens.onrender.com/api/health
+
 ### Backend 확인
 
 ```bash
-curl -s https://your-render-backend.onrender.com/api/health
+curl -s https://akibalens.onrender.com/api/health
 ```
 
 정상 응답:

@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AkibaLens Final MVP Report</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: #132033;
+        background: #eef3f8;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+          "Noto Sans KR", "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      .page {
+        max-width: 1120px;
+        margin: 0 auto;
+        background: #ffffff;
+      }
+
+      .cover {
+        min-height: 960px;
+        padding: 68px 64px;
+        color: #ffffff;
+        background:
+          linear-gradient(135deg, rgba(9, 32, 58, 0.97), rgba(14, 108, 132, 0.94)),
+          radial-gradient(circle at 88% 14%, rgba(239, 81, 102, 0.4), transparent 34%),
+          radial-gradient(circle at 16% 84%, rgba(255, 205, 76, 0.32), transparent 32%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .eyebrow {
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #bce8f1;
+      }
+
+      .cover h1 {
+        margin: 22px 0 12px;
+        max-width: 860px;
+        font-size: 56px;
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+
+      .cover .subtitle {
+        max-width: 760px;
+        color: #ddf0f6;
+        font-size: 21px;
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .badge {
+        padding: 8px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.34);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .cover-meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .cover-card {
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .cover-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: #bce8f1;
+        font-size: 13px;
+      }
+
+      .cover-card span {
+        font-size: 17px;
+        font-weight: 900;
+      }
+
+      section {
+        padding: 34px 48px;
+        border-bottom: 1px solid #e4edf5;
+        break-inside: avoid;
+      }
+
+      h2 {
+        margin: 0 0 18px;
+        font-size: 28px;
+        line-height: 1.2;
+      }
+
+      h3 {
+        margin: 22px 0 10px;
+        font-size: 18px;
+      }
+
+      p {
+        margin: 0 0 13px;
+      }
+
+      .lead {
+        color: #33445c;
+        font-size: 17px;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .card {
+        padding: 18px;
+        border: 1px solid #dbe6f1;
+        border-radius: 12px;
+        background: #ffffff;
+        break-inside: avoid;
+      }
+
+      .soft {
+        background: #f7fafc;
+      }
+
+      .metric {
+        color: #126d86;
+        font-size: 28px;
+        font-weight: 950;
+      }
+
+      .label {
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .status {
+        display: inline-flex;
+        margin: 0 6px 6px 0;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .done {
+        color: #0a6849;
+        background: #e4f7ee;
+      }
+
+      .risk {
+        color: #9a4217;
+        background: #fff0e4;
+      }
+
+      .next {
+        color: #214f9b;
+        background: #e9f0ff;
+      }
+
+      table {
+        width: 100%;
+        margin-top: 10px;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      th,
+      td {
+        padding: 11px 10px;
+        border-bottom: 1px solid #e5edf5;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: #52647d;
+        background: #f4f7fb;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      ul {
+        margin: 10px 0 0 20px;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 7px;
+      }
+
+      code {
+        padding: 2px 5px;
+        border-radius: 5px;
+        background: #eef3f8;
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 0.92em;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .step {
+        min-height: 82px;
+        padding: 12px;
+        border: 1px solid #d8e5ef;
+        border-radius: 10px;
+        background: #f7fafc;
+        font-size: 12px;
+        font-weight: 850;
+        text-align: center;
+      }
+
+      .figure-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .sample-img {
+        width: 100%;
+        max-height: 420px;
+        object-fit: contain;
+        border: 1px solid #dbe6f1;
+        border-radius: 12px;
+        background: #f8fafc;
+      }
+
+      .caption {
+        margin-top: 8px;
+        color: #667790;
+        font-size: 12px;
+      }
+
+      .links {
+        word-break: break-all;
+      }
+
+      .break {
+        break-before: page;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="cover">
+        <div>
+          <div class="eyebrow">Final MVP Report</div>
+          <h1>AkibaLens</h1>
+          <p class="subtitle">
+            AI-powered figure identification and marketplace search assistant
+            for anime figure shoppers in Japan.
+          </p>
+          <div class="badge-row">
+            <span class="badge">OpenAI Vision</span>
+            <span class="badge">OpenAI Web Search</span>
+            <span class="badge">FastAPI</span>
+            <span class="badge">Next.js</span>
+            <span class="badge">Vercel + Render</span>
+          </div>
+        </div>
+        <div class="cover-meta">
+          <div class="cover-card">
+            <strong>Project Type</strong>
+            <span>Portfolio MVP</span>
+          </div>
+          <div class="cover-card">
+            <strong>Status</strong>
+            <span>Live Deployed MVP</span>
+          </div>
+          <div class="cover-card">
+            <strong>Date</strong>
+            <span>2026-06-12</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Executive Summary</h2>
+        <p class="lead">
+          AkibaLens는 아키하바라, 돈키호테, 중고 피규어샵에서 박스 없이
+          진열된 피규어를 발견했을 때 정확한 캐릭터명, 작품명, 상품명을 몰라
+          검색과 가격 비교가 어려운 문제를 해결하기 위해 만든 AI 쇼핑 보조
+          MVP이다.
+        </p>
+        <p>
+          사용자는 피규어 사진을 업로드하고, 시스템은 OpenAI Vision으로
+          캐릭터와 작품을 추정한 뒤 OpenAI Web Search를 통해 상품 후보를
+          검색한다. 이후 후보를 다시 점수화하고, 일본 쇼핑몰 검색 링크와
+          가격 확인 preview를 제공한다.
+        </p>
+        <div class="grid-3">
+          <div class="card soft">
+            <div class="label">Live Frontend</div>
+            <p class="links">https://frontend-ten-lake-39.vercel.app</p>
+          </div>
+          <div class="card soft">
+            <div class="label">Backend</div>
+            <p class="links">https://akibalens.onrender.com</p>
+          </div>
+          <div class="card soft">
+            <div class="label">Repository</div>
+            <p class="links">https://github.com/jinjintaek/AkibaLens</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problem Definition</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>User Pain</h3>
+            <ul>
+              <li>피규어 이름을 모른다.</li>
+              <li>캐릭터명과 작품명을 모른다.</li>
+              <li>일본어 상품명을 검색하기 어렵다.</li>
+              <li>제조사와 라인업을 구분하기 어렵다.</li>
+              <li>현재 가격이 합리적인지 판단하기 어렵다.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>MVP Goal</h3>
+            <ul>
+              <li>사진 한 장으로 검색 시작점을 만든다.</li>
+              <li>캐릭터/작품을 우선 식별한다.</li>
+              <li>상품 후보와 근거를 함께 제공한다.</li>
+              <li>일본 쇼핑몰 검색 링크를 제공한다.</li>
+              <li>불확실한 정보는 단정하지 않는다.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>System Architecture</h2>
+        <p>
+          MVP는 자체 CV 모델 학습 대신 API 기반 구조를 사용했다. 빠른 검증이
+          목표였기 때문에 OpenAI Vision과 Web Search를 조합하고, 서비스
+          흐름과 불확실성 처리에 집중했다.
+        </p>
+        <div class="flow">
+          <div class="step">Image Upload</div>
+          <div class="step">OpenAI Vision</div>
+          <div class="step">Search Query Generation</div>
+          <div class="step">OpenAI Web Search</div>
+          <div class="step">Candidate Reranking</div>
+          <div class="step">Marketplace Links</div>
+        </div>
+        <table>
+          <tr>
+            <th>Layer</th>
+            <th>Implementation</th>
+          </tr>
+          <tr>
+            <td>Frontend</td>
+            <td>Next.js, TypeScript, Tailwind CSS, Vercel</td>
+          </tr>
+          <tr>
+            <td>Backend</td>
+            <td>FastAPI, Pydantic, Uvicorn, Render</td>
+          </tr>
+          <tr>
+            <td>AI</td>
+            <td>OpenAI Vision, OpenAI Web Search, structured output</td>
+          </tr>
+          <tr>
+            <td>Search</td>
+            <td>AmiAmi, Mandarake, Suruga-ya search links and retrieved candidates</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Implemented Features</h2>
+        <div>
+          <span class="status done">Image upload</span>
+          <span class="status done">Vision identification</span>
+          <span class="status done">Search query generation</span>
+          <span class="status done">OpenAI Web Search retrieval</span>
+          <span class="status done">Candidate reranking</span>
+          <span class="status done">Marketplace links</span>
+          <span class="status done">Price preview UI</span>
+          <span class="status done">Vercel deployment</span>
+          <span class="status done">Render deployment</span>
+        </div>
+        <p>
+          Production API 테스트에서 <code>mode: openai</code>,
+          <code>model: gpt-5.2</code> 응답을 확인했다. Render free tier 특성상
+          첫 요청은 느릴 수 있지만, 배포된 환경에서 실제 이미지 분석이 정상
+          동작한다.
+        </p>
+      </section>
+
+      <section class="break">
+        <h2>Sample Evaluation</h2>
+        <div class="grid-3">
+          <div class="card soft">
+            <div class="label">Character Identification</div>
+            <div class="metric">4 / 5</div>
+          </div>
+          <div class="card soft">
+            <div class="label">Series Identification</div>
+            <div class="metric">4 / 5</div>
+          </div>
+          <div class="card soft">
+            <div class="label">Exact Product Page</div>
+            <div class="metric">0 / 5</div>
+          </div>
+        </div>
+        <table>
+          <tr>
+            <th>Sample</th>
+            <th>Expected</th>
+            <th>Result</th>
+            <th>Verdict</th>
+          </tr>
+          <tr>
+            <td>sample_01</td>
+            <td>Bakugo / My Hero Academia / Grandista</td>
+            <td>Bakugo and series correct, Banpresto detected, Grandista missed</td>
+            <td>Partial Success</td>
+          </tr>
+          <tr>
+            <td>sample_02</td>
+            <td>Gojo / Jujutsu Kaisen / Luminasta</td>
+            <td>Character and series correct, Luminasta missed</td>
+            <td>Partial Success</td>
+          </tr>
+          <tr>
+            <td>sample_03</td>
+            <td>Luffy / One Piece / Ichiban Kuji</td>
+            <td>Character and series correct, Ichiban Kuji missed</td>
+            <td>Partial Success</td>
+          </tr>
+          <tr>
+            <td>sample_04</td>
+            <td>Reze / Chainsaw Man / Nendoroid</td>
+            <td>Predicted Mizore Yoroizuka / Sound! Euphonium</td>
+            <td>Failure</td>
+          </tr>
+          <tr>
+            <td>sample_05</td>
+            <td>Tanjiro / Demon Slayer / Ichiban Kuji</td>
+            <td>Character and series correct, Ichiban Kuji missed</td>
+            <td>Partial Success</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Representative Production Result</h2>
+        <div class="figure-grid">
+          <div>
+            <img class="sample-img" src="../sample/sample_01.png" alt="Bakugo sample" />
+            <div class="caption">sample_01.png - production API test image</div>
+          </div>
+          <div class="card soft">
+            <h3>Production API Output</h3>
+            <ul>
+              <li><strong>Mode:</strong> openai</li>
+              <li><strong>Model:</strong> gpt-5.2</li>
+              <li><strong>Character:</strong> Katsuki Bakugo</li>
+              <li><strong>Series:</strong> My Hero Academia</li>
+              <li><strong>Manufacturer clue:</strong> Banpresto</li>
+              <li><strong>Retrieval:</strong> Suruga-ya candidates returned</li>
+              <li><strong>Reranking:</strong> Top candidate scored 86 / 100</li>
+            </ul>
+            <p>
+              이 결과는 배포된 Render backend가 실제 OpenAI API를 사용해
+              이미지 분석, 검색 후보 생성, reranking까지 수행했음을 보여준다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Key Technical Decisions</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Why API-first?</h3>
+            <p>
+              프로젝트의 목적은 커스텀 모델 성능 경쟁이 아니라, 실제 사용자가
+              원하는 워크플로우인지 빠르게 검증하는 것이었다. 따라서 CLIP
+              fine-tuning이나 자체 CNN 학습은 MVP 범위에서 제외했다.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Why Search-based Retrieval?</h3>
+            <p>
+              Vision만으로 상품명과 라인업을 확정하기 어렵다는 문제가 있었다.
+              이를 보완하기 위해 Vision 결과를 검색어로 변환하고, Web Search로
+              상품 후보를 가져온 뒤 다시 reranking하는 구조를 선택했다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Problems Found and Solved</h2>
+        <table>
+          <tr>
+            <th>Problem</th>
+            <th>Resolution</th>
+          </tr>
+          <tr>
+            <td>Vision output was too conservative for loose figures</td>
+            <td>Prompt changed to aggressively provide character/series hypotheses while keeping manufacturer/line uncertain.</td>
+          </tr>
+          <tr>
+            <td>Google Custom Search access failed for new project</td>
+            <td>Switched MVP retrieval provider to OpenAI Web Search.</td>
+          </tr>
+          <tr>
+            <td>Filename hints distorted evaluation</td>
+            <td>Renamed samples to neutral filenames and reran evaluation.</td>
+          </tr>
+          <tr>
+            <td>Production backend returned mock mode</td>
+            <td>Fixed Render environment variable name to <code>OPENAI_API_KEY</code> and redeployed.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Current Limitations</h2>
+        <div>
+          <span class="status risk">No true reverse image search</span>
+          <span class="status risk">Exact product line unstable</span>
+          <span class="status risk">Price parsing not implemented</span>
+          <span class="status risk">Render cold start</span>
+          <span class="status risk">OpenAI API cost</span>
+        </div>
+        <p>
+          AkibaLens는 현재 “정확한 상품 확정 서비스”가 아니라 “사진을 검색
+          가능한 상품 후보와 일본어 검색어로 바꿔주는 AI 검색 보조 MVP”로
+          포지셔닝하는 것이 가장 적절하다.
+        </p>
+      </section>
+
+      <section>
+        <h2>Next Steps</h2>
+        <div>
+          <span class="status next">Staged UI</span>
+          <span class="status next">Additional image upload</span>
+          <span class="status next">Product image comparison</span>
+          <span class="status next">Evaluation set expansion</span>
+          <span class="status next">Price policy review</span>
+        </div>
+        <ul>
+          <li>캐릭터/작품 결과를 먼저 보여주고 상품 검색은 별도 단계로 표시한다.</li>
+          <li>박스, 받침대, 가격표 사진을 추가로 받아 정확도를 높인다.</li>
+          <li>상품 페이지 이미지와 업로드 이미지를 비교하는 reranking을 검토한다.</li>
+          <li>샘플을 20장 이상으로 늘리고 조건별 평가셋을 만든다.</li>
+          <li>쇼핑몰 정책을 확인한 뒤 실제 가격 파싱 여부를 결정한다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Conclusion</h2>
+        <p class="lead">
+          AkibaLens MVP는 배포된 환경에서 이미지 업로드, OpenAI Vision 분석,
+          검색 후보 생성, candidate reranking, 쇼핑몰 링크 제공까지 end-to-end로
+          동작한다.
+        </p>
+        <p>
+          포트폴리오 관점에서 이 프로젝트의 가치는 단순히 AI API를 호출했다는
+          점이 아니라, 실제 사용자 문제에서 시작해 MVP 범위를 정하고, 평가
+          과정에서 label leakage와 상품 식별의 난이도를 발견했으며, 이를 바탕으로
+          불확실성을 전제로 한 제품 UX를 설계했다는 점이다.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

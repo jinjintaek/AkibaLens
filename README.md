@@ -1,17 +1,22 @@
 # AkibaLens
 
-Snap a figure. Find it instantly.
+Snap a figure. Find useful product candidates.
 
-MVP Goal:
-Identify anime figures from images and compare prices across Japanese marketplaces.
+AkibaLens is an AI-powered figure search assistant for anime figure shoppers in Japan.
 
-AkibaLens는 일본 여행 중 아키하바라, 돈키호테, 중고 피규어샵 등에서 피규어와 굿즈를 구매하려는 사용자를 위한 AI 기반 쇼핑 보조 서비스입니다.
+피규어 사진 한 장을 업로드하면 캐릭터와 작품을 추정하고, 일본 쇼핑몰에서 확인할 수 있는 상품 후보, 일본어 검색어, 가격 확인 링크를 제공합니다.
 
-사용자가 피규어 사진을 업로드하면 AI Vision Model이 캐릭터, 작품명, 제조사, 시리즈명, 추정 상품명을 식별하고, 일본 쇼핑몰 가격 정보를 검색하여 구매 판단을 돕는 것을 목표로 합니다.
+## Live Demo
+
+- Frontend: https://frontend-ten-lake-39.vercel.app
+- Backend health check: https://akibalens.onrender.com/api/health
+- GitHub: https://github.com/jinjintaek/AkibaLens
+
+Note: The backend runs on Render free tier, so the first request can take 50+ seconds after inactivity.
 
 ## Current MVP Status
 
-현재 AkibaLens는 로컬 데모 기준으로 다음 end-to-end 흐름이 동작합니다.
+현재 AkibaLens는 배포된 MVP 기준으로 다음 end-to-end 흐름이 동작합니다.
 
 ```text
 Image Upload
@@ -33,13 +38,39 @@ Image Upload
 - AmiAmi, Mandarake, Suruga-ya 검색 링크 생성
 - 가격 비교 preview UI
 - 샘플 이미지 5장 평가 및 label leakage 제거 재평가
+- Vercel frontend 배포
+- Render backend 배포
+- Production OpenAI API 연결 확인
 
 아직 MVP preview 단계인 부분:
 
 - 가격 비교 값은 실시간 파싱이 아니라 mock/preview 값입니다.
 - 정확한 상품명/라인업 확정은 아직 불안정합니다.
 - Web Search는 reverse image search가 아니라 Vision이 만든 텍스트 단서를 기반으로 검색합니다.
-- 배포 설정 파일은 준비되어 있으며, 현재 실제 배포는 Vercel/Render 계정 인증이 필요한 단계입니다.
+
+## Tech Stack
+
+| Area | Stack |
+| --- | --- |
+| Frontend | Next.js, TypeScript, Tailwind CSS, Vercel |
+| Backend | FastAPI, Pydantic, Uvicorn, Render |
+| AI | OpenAI Vision, OpenAI Web Search, structured output |
+| Search Flow | Vision-generated search queries, marketplace links, candidate reranking |
+| Docs | Markdown, HTML/PDF reports |
+
+## Architecture
+
+```text
+User Image
+  -> Next.js Upload UI
+  -> FastAPI /api/analyze
+  -> OpenAI Vision structured identification
+  -> OpenAI Web Search product retrieval
+  -> Candidate reranking
+  -> Marketplace links and price preview
+```
+
+The MVP intentionally avoids custom CV model training. The goal is to validate whether users want this workflow before investing in fine-tuning, image retrieval infrastructure, or marketplace-specific crawlers.
 
 ## Key Evaluation Result
 
@@ -61,6 +92,8 @@ Image Upload
 - `docs/sample-evaluation-results.json`
 - `docs/sample-evaluation-results-no-filename-hints.json`
 - `docs/akibalens-interim-report.pdf`
+- `docs/akibalens-final-report.pdf`
+- `docs/demo-guide.md`
 - `docs/deployment.md`
 
 핵심 인사이트:
@@ -68,6 +101,14 @@ Image Upload
 - 캐릭터/작품 식별은 MVP 가치 검증에 충분히 유효합니다.
 - 정확한 상품명/라인업 식별은 별도 candidate reranking과 후보 검증이 필요합니다.
 - 파일명에 정답 힌트가 들어가면 평가가 낙관적으로 왜곡될 수 있어, label leakage 제거 평가를 별도로 수행했습니다.
+
+## Portfolio Documents
+
+- Final report: `docs/akibalens-final-report.pdf`
+- Demo guide: `docs/demo-guide.md`
+- MVP sample evaluation summary: `docs/mvp-sample-evaluation-summary.md`
+- Interim report: `docs/akibalens-interim-report.pdf`
+- Deployment guide: `docs/deployment.md`
 
 ## Local Development
 

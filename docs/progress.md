@@ -157,11 +157,22 @@
 
 ## Phase 7. Deployment
 
-- [ ] Frontend Vercel 배포
-- [ ] Backend Railway 또는 Render 배포
-- [ ] Production 환경 변수 설정
-- [ ] CORS 설정 확인
-- [ ] 실제 이미지 3~5개 데모 테스트
+- [x] Frontend Vercel 배포
+- [x] Backend Render 배포
+- [x] Production 환경 변수 설정
+- [x] CORS 설정 확인
+- [x] 실제 이미지 1장 production API 테스트
+
+배포 URL:
+
+- Frontend: `https://frontend-ten-lake-39.vercel.app`
+- Backend: `https://akibalens.onrender.com`
+- Health check: `https://akibalens.onrender.com/api/health`
+
+메모:
+
+- Render free tier cold start로 첫 요청은 50초 이상 걸릴 수 있다.
+- Production API 테스트에서 `mode: openai`, `model: gpt-5.2` 응답을 확인했다.
 
 ## Current Milestone
 
